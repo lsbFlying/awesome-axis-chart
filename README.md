@@ -7,7 +7,7 @@ Its original intention is that it is not flexible enough to set the content boun
 
 This leads to the border overflow display problem of charts for data display in different scenes,
 
-The most important thing about axischart is not its configuration parameter regulation, but its internal automatic size processing and regulation function,
+The most important thing about AxisChart is not its configuration parameter regulation, but its internal automatic size processing and regulation function,
 
 It is sufficient to cope with the display of various data levels so that the display of the chart does not exceed the boundary,
 
@@ -35,7 +35,6 @@ npm i awesome-axis-chart
 ```
 
 ## npm start
-Runs the app in the development mode.
 
 ## Usage
 ```tsx
@@ -183,12 +182,12 @@ The page running effect view is as follows "Effective Demo View"
 
 ## Effective Demo View
 <p align="center">
-    <img src="static/img/img1.png" width="600px" height="auto">
-    <img src="static/img/img2.png" width="600px" height="auto">
-    <img src="static/img/img3.png" width="600px" height="auto">
-    <img src="static/img/img4.png" width="600px" height="auto">
-    <img src="static/img/img5.png" width="600px" height="auto">
-    <img src="static/img/img6.png" width="600px" height="auto">
+    <img src="https://github.com/lsbFlying/awesome-axis-chart/blob/master/src/static/img/img1.png?raw=true" width="600px" height="auto">
+    <img src="https://github.com/lsbFlying/awesome-axis-chart/blob/master/src/static/img/img2.png?raw=true" width="600px" height="auto">
+    <img src="https://github.com/lsbFlying/awesome-axis-chart/blob/master/src/static/img/img3.png?raw=true" width="600px" height="auto">
+    <img src="https://github.com/lsbFlying/awesome-axis-chart/blob/master/src/static/img/img4.png?raw=true" width="600px" height="auto">
+    <img src="https://github.com/lsbFlying/awesome-axis-chart/blob/master/src/static/img/img5.png?raw=true" width="600px" height="auto">
+    <img src="https://github.com/lsbFlying/awesome-axis-chart/blob/master/src/static/img/img6.png?raw=true" width="600px" height="auto">
 </p>
 
 ## Learn More
