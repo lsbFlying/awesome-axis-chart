@@ -1,21 +1,8 @@
 <div align="center">
     <h1>AxisChart</h1>
-<div align="left">
-The AxisChart component is the secondary encapsulation of the echarts and echarts for react components,
-
-Its original intention is that it is not flexible enough to set the content boundary and distance dimension displayed by the chart display data of ecarts chart library,
-
-This leads to the border overflow display problem of charts for data display in different scenes,
-
-The most important thing about AxisChart is not its configuration parameter regulation, but its internal automatic size processing and regulation function,
-
-It is sufficient to cope with the display of various data levels so that the display of the chart does not exceed the boundary,
-
-The various parametric configurations attached to it are not the original intention of the component creation, but the abnormal configuration to meet the wonderful needs of various project managers
-</div>
 <hr/>
 <div align="left">
-AxisChart组件是对于echarts、echarts-for-react组件的二次封装，
+    AxisChart组件是对于echarts、echarts-for-react组件的二次封装，
 
 它的初衷是出于对于echarts图表库的图表展示数据显示出的内容边界以及距离尺寸设置不够"灵活"，
 
@@ -175,11 +162,6 @@ function App2() {
 
 ```
 
-## Demo
-Start this project and then run the app in the development mode.
-Then open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-The page running effect view is as follows "Effective Demo View"
-
 ## Effective Demo View
 <p align="center">
     <img src="https://github.com/lsbFlying/awesome-axis-chart/blob/master/src/static/img/img1.png?raw=true" width="600px" height="auto">
@@ -190,24 +172,5 @@ The page running effect view is as follows "Effective Demo View"
     <img src="https://github.com/lsbFlying/awesome-axis-chart/blob/master/src/static/img/img6.png?raw=true" width="600px" height="auto">
 </p>
 
-## Learn More
-Start this project and then run the app in the development mode,
-Then open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-View the project demo test page's source code, There are many demo examples of function introduction and code
-
-## Description
-If the project startup page does not display normally, this problem is caused by the fact that the browser has installed the react devtools extension
-
-Find node_ modules/@pmmmwh/react-refresh-webpack-plugin/client/ReactRefreshEntry. JS file,
-
-Find the error reporting code and directly comment the line causing the error: refreshruntime injectIntoGlobalHook(safeThis);
-
-Then restart. This error is also closely related to the react version. Remember that the old version doesn't seem to have this problem.
-
-In addition, for the version of webpack, there may be related version problems during startup,
-
-Install by specified version: NPM I webpack@4.44.2 -D or remove package You can reinstall the dependency of webpm on webpi
-
 ## License
-
-[MIT License](https://gitlab.com/1262300490/axischart/-/blob/master/LICENSE) (c) [刘善保](https://gitlab.com/1262300490)
+[MIT License](https://github.com/lsbFlying/resy/blob/master/LICENSE) (c) [刘善保](https://github.com/lsbFlying)
