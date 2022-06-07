@@ -173,4 +173,4 @@ function App2() {
 </p>
 
 ## License
-[MIT License](https://github.com/lsbFlying/resy/blob/master/LICENSE) (c) [刘善保](https://github.com/lsbFlying)
+[MIT License](https://github.com/lsbFlying/awesome-axis-chart/blob/master/LICENSE) (c) [刘善保](https://github.com/lsbFlying)
