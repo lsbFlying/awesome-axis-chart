@@ -10,7 +10,7 @@ import { darkDefaultBasicConfigOption } from "../static";
  */
 export type AxisChartProps = AxisChartICSSProps & ChartProps & ChartColorPalette & {
   /**
-   * @desc: 主题（纵向暗系 | 横行暗系 | 纵向明系 | 横行明系）
+   * @desc: 主题（纵向暗系 | 横向暗系 | 纵向明系 | 横向明系）
    * @type {("verticalDark" | "horizontalDark" | "verticalLight" | "horizontalLight")}
    * @default "verticalDark" 默认纵向暗系
    */
