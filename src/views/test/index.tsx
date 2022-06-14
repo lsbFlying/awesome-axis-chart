@@ -710,6 +710,7 @@ export default class TestClass extends React.PureComponent<Props, State> {
     }
     return (
       <AxisChart
+        // noMergeOption={numberIndex === 1}
         theme={theme.includes("horizontal") ? "horizontalDark" : "verticalDark"}
         chartData={chartDataTemp}
         // 单位后缀，数组长度为4(分别是：单位ID后缀，月-类目轴单位，cm-值轴单位，mm-双Y轴时的右侧y轴单位)

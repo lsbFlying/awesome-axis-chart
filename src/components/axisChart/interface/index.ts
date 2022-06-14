@@ -29,7 +29,7 @@ export type AxisChartProps = AxisChartICSSProps & ChartProps & ChartColorPalette
   /** 图表数据缓冲loading */
   echartsLoading: boolean;
   /**
-   * 是否合并echarts图表参数配置(默认为false合并，这样可以提高渲染的流畅度)
+   * 是否合并echarts图表参数配置(默认为false--->即合并参数配置，这样可以提高渲染的流畅度，但是降低了渲染数据的准确性)
    * 但是有些情况下还是需要的，可以避免有些合并渲染之后的数据bug，所以一般在配置不是过于交互复杂的情况下可以默认为合并
    * 除非某些功能复杂，配置属性变化多样才可能导致渲染bug的情况下再启用不合并来免除bug
    */
