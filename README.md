@@ -158,12 +158,12 @@ function App2() {
 
 ## Effective Demo View
 <p align="center">
-    <img src="https://github.com/lsbFlying/awesome-axis-chart/blob/master/src/static/img/img1.png?raw=true" width="600px" height="auto">
-    <img src="https://github.com/lsbFlying/awesome-axis-chart/blob/master/src/static/img/img2.png?raw=true" width="600px" height="auto">
-    <img src="https://github.com/lsbFlying/awesome-axis-chart/blob/master/src/static/img/img3.png?raw=true" width="600px" height="auto">
-    <img src="https://github.com/lsbFlying/awesome-axis-chart/blob/master/src/static/img/img4.png?raw=true" width="600px" height="auto">
-    <img src="https://github.com/lsbFlying/awesome-axis-chart/blob/master/src/static/img/img5.png?raw=true" width="600px" height="auto">
-    <img src="https://github.com/lsbFlying/awesome-axis-chart/blob/master/src/static/img/img6.png?raw=true" width="600px" height="auto">
+    <img alt="awesome-axis-chart" src="https://github.com/lsbFlying/awesome-axis-chart/blob/master/src/static/img/img1.png?raw=true" width="600px" height="auto">
+    <img alt="awesome-axis-chart" src="https://github.com/lsbFlying/awesome-axis-chart/blob/master/src/static/img/img2.png?raw=true" width="600px" height="auto">
+    <img alt="awesome-axis-chart" src="https://github.com/lsbFlying/awesome-axis-chart/blob/master/src/static/img/img3.png?raw=true" width="600px" height="auto">
+    <img alt="awesome-axis-chart" src="https://github.com/lsbFlying/awesome-axis-chart/blob/master/src/static/img/img4.png?raw=true" width="600px" height="auto">
+    <img alt="awesome-axis-chart" src="https://github.com/lsbFlying/awesome-axis-chart/blob/master/src/static/img/img5.png?raw=true" width="600px" height="auto">
+    <img alt="awesome-axis-chart" src="https://github.com/lsbFlying/awesome-axis-chart/blob/master/src/static/img/img6.png?raw=true" width="600px" height="auto">
 </p>
 
 ## License
