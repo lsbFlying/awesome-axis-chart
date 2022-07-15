@@ -15,8 +15,6 @@
 npm i awesome-axis-chart
 ```
 
-## npm start
-
 ## Usage
 ```tsx
 import AxisChart, { chartData } from "awesome-axis-chart";
