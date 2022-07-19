@@ -95,7 +95,9 @@ export const fitFlex = (px: number, disabledFitFlex: boolean = true, defaultEqPx
   return (clientWidth * px) / defaultEqPx;
 }
 
-/** 精确计算字符串个数 */
+/**
+ * @description 精确计算字符串个数，纯粹经验计算积累，无逻辑可言
+ */
 export const exactlyCalcStrCount = (param: string, exact = true, exactlyCalcArr: [number, number, number] = [0.25, 0.3, 0.3]) => {
   let calcStrCount = 0;
   // 为了scatter这里特意处理一下字符串
@@ -103,17 +105,17 @@ export const exactlyCalcStrCount = (param: string, exact = true, exactlyCalcArr:
     // 对于下面的类目轴名称倾斜而言是可以粗略计算，但是legend需要精确计算
     if (((i.charCodeAt(0) === 32)
       || (i.charCodeAt(0) === 46)
-      || (i.charCodeAt(0) === 47) // 英文/
+      || (i.charCodeAt(0) === 47) // "/"符号
       || (i.charCodeAt(0) === 124)
       || (i.charCodeAt(0) >= 48 && i.charCodeAt(0) <= 57)
       || (i.charCodeAt(0) >= 65 && i.charCodeAt(0) <= 90)
       || (i.charCodeAt(0) >= 97 && i.charCodeAt(0) <= 122)) && exact) {
       // 特殊字符在canvas实际渲染时所占的空间大小不一样，需要特殊处理
-      if (i.charCodeAt(0) === 49 || i.charCodeAt(0) === 124) { // 数字1或者英文竖线|
+      if (i.charCodeAt(0) === 49 || i.charCodeAt(0) === 124) { // 数字"1"或者英文竖线"|"
         calcStrCount += (exactlyCalcArr[0]);
       } else if (i.charCodeAt(0) === 32) {  // 空格
         calcStrCount += (exactlyCalcArr[1]);
-      } else if (i.charCodeAt(0) === 46) {  // 英文点.
+      } else if (i.charCodeAt(0) === 46) {  // "."符号
         calcStrCount += (exactlyCalcArr[2]);
       } else {
         calcStrCount += 0.5;
