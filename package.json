@@ -2,11 +2,9 @@
   "name": "awesome-axis-chart",
   "version": "0.2.3",
   "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "lodash": "^4.17.21",
     "echarts": "^5.2.2",
-    "echarts-for-react": "^3.0.1"
+    "echarts-for-react": "^3.0.2",
+    "lodash": "^4.17.21"
   },
   "peerDependencies": {
     "echarts": "^5.2.2",
@@ -30,7 +28,9 @@
     "@types/styled-components": "^5.1.15",
     "@types/tinycolor2": "^1.4.3",
     "copy-webpack-plugin": "^4.6.0",
-    "react-scripts": "4.0.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "^4.0.3",
     "resize-observer-polyfill": "^1.5.1",
     "styled-components": "^5.3.1",
     "tinycolor2": "^1.4.2",
