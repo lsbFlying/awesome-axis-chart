@@ -4,3 +4,6 @@
  * 尽管有些浏览器可以支持到最小字体像素值是10px，但是这里仍然以大部分浏览器为主
  */
 export const defaultFontSize = 12;
+
+// x、y轴的轴字体与轴线之间的margin距离
+export const defaultAxisLabelMargin = 8;

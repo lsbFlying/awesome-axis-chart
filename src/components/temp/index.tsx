@@ -7,7 +7,7 @@ import uniq from "lodash/uniq";
 import merge from "lodash/merge";
 import ResizeObserver from "resize-observer-polyfill";
 import {AxisChartProps, AxisChartState} from "./model";
-import {defaultFontSize} from "./option";
+import {defaultAxisLabelMargin, defaultFontSize} from "./option";
 import {EChartsType} from "echarts/types/dist/echarts";
 
 export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartState> {
@@ -85,8 +85,12 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
     
     const valueAxisNameFontSize = chartOptionValueAxis?.nameTextStyle?.fontSize || defaultFontSize;
     const valueAxisName = chartOptionValueAxis?.name || "";
-    // +2是为了弥补边界的距离处理
-    const valueAxisNamePaddingLeftOrRight = -(`${maxValue}`.length * valueAxisNameFontSize / 2 + 8 + 2);
+    const valueAxisNamePaddingLeftOrRight = -(
+      `${maxValue}`.length * valueAxisNameFontSize / 2
+      + (chartOptionValueAxis?.axisLabel?.margin || defaultAxisLabelMargin)
+      // +2是为了弥补边界的距离处理
+      + 2
+    );
     // 只有一条值轴时，该值轴是否在右侧
     const singleValueAxisAlignRight = chartOptionValueAxis?.position === "right";
     // 值轴是否有设置上下反向颠倒
