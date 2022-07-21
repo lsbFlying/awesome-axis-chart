@@ -1,7 +1,8 @@
+import {RefObject} from "react";
 import {AxisChartICSS} from "./icss";
 
 export interface AxisChartState {
-  containerId: string;
+  containerRef: RefObject<HTMLElement>;
 }
 
 export type AxisChartDataType = [string, string, number];

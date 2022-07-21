@@ -25,9 +25,9 @@ const TempTest = () => {
             // },
             yAxis: {
               name: "单位：件数",
-              axisLabel: {
-                margin: 18,
-              },
+              // axisLabel: {
+              //   margin: 18,
+              // },
               // position: "right",
               // inverse: true,
             },

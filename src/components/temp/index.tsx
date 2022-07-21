@@ -1,6 +1,5 @@
 import React from "react";
 import * as echarts from "echarts";
-import uniqueId from "lodash/uniqueId";
 import max from "lodash/max";
 import reverse from "lodash/reverse";
 import uniq from "lodash/uniq";
@@ -19,7 +18,7 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
   };
   
   state: AxisChartState = {
-    containerId: uniqueId("AxisChart"),
+    containerRef: React.createRef(),
   };
   
   /** 图表实例 */
@@ -28,24 +27,28 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
   private myObserver: any = null;
   
   componentDidMount() {
-    const { containerId } = this.state;
-    this.chartsInstance = echarts.init(document.getElementById(containerId) as HTMLElement);
+    const { containerRef } = this.state;
+    this.chartsInstance = echarts.init(containerRef.current as HTMLElement);
     this.chartOption();
     this.myObserver = new ResizeObserver(() => {
       this.chartsInstance?.resize();
     });
-    this.myObserver.observe(document.getElementById(containerId));
+    this.myObserver.observe(containerRef.current);
   }
   
   componentWillUnmount() {
-    const { containerId } = this.state;
     this.chartsInstance?.dispose();
-    this.myObserver.unobserve(document.getElementById(containerId));
+    this.myObserver.unobserve();
   }
   
   render() {
-    const { containerId } = this.state;
-    return <div style={{ width: "100%", height: "100%" }} id={containerId}/>;
+    const { containerRef } = this.state;
+    return (
+      <div
+        ref={containerRef as any}
+        style={{ width: "100%", height: "100%" }}
+      />
+    );
   }
   
   /** 图表参数配置 */
