@@ -37,6 +37,14 @@ const TempTest = () => {
             //     type: "shadow",
             //   },
             // },
+            // grid: {
+            //   bottom: 20,
+            // },
+            // legend: {
+            //   // itemWidth: 0,
+            //   // itemGap: 0,
+            //   bottom: 0,
+            // },
           }}
         />
       </div>

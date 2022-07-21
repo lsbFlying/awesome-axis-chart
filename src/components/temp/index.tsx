@@ -67,7 +67,7 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
     const allSeriesValueDataArray = data.map(item => item[2]);
     const isVertical = theme === "vertical";
     const maxValue = max(allSeriesValueDataArray);
-    const seriesTypes = uniq(data.map(item => item[0]));
+    const seriesTypes: string[] = uniq(data.map(item => item[0]));
     
     // 先合并，然后取合并值配置或者无配置则按默认配置处理
     const chartOptions = merge({
@@ -177,9 +177,18 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
       }, chartOptions.grid),
     };
     
+    // legend的是否换行很难计算，所以干脆保持最宽泛的原始配置项
+    const legendObj = {
+      legend: merge({
+        padding: 0,
+        icon: "rect",
+      }, chartOptions?.legend),
+    };
+    
     return {
       ...chartOptions,
       ...gridObj,
+      ...legendObj,
       ...xAxisObj,
       ...yAxisObj,
     };
