@@ -1,5 +1,4 @@
 import {AxisChartICSS} from "./icss";
-import {ECBasicOption} from "echarts/types/dist/shared";
 
 export interface AxisChartState {
   containerId: string;
@@ -15,7 +14,7 @@ export interface AxisChartProps extends AxisChartICSS {
    */
   data: AxisChartDataType[];
   /** echarts的配置参数(echarts官方文档上的配置项) */
-  chartOption?: ECBasicOption;
+  option?: any;
   /** 主题(垂直/水平) */
   theme: "vertical" | "horizontal";
   /**
