@@ -1,6 +1,13 @@
 import {RefObject} from "react";
 import {AxisChartICSS} from "./icss";
 
+// 尺寸变化类型
+export interface ResizeObserverType {
+  observe(target: Element): void;
+  unobserve(target: Element): void;
+  disconnect(): void;
+}
+
 export interface AxisChartState {
   containerRef: RefObject<HTMLElement>;
 }

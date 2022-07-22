@@ -7,3 +7,18 @@ export const defaultFontSize = 12;
 
 // x、y轴的轴字体与轴线之间的margin距离
 export const defaultAxisLabelMargin = 8;
+
+// 图例相关配置
+export const legendConfig = {
+  // 整个legend的内边距
+  padding: 0,
+  // 图例每一项之间的距离（横向布局时为水平间隔，纵向布局时为纵向间隔）
+  itemGap: 10,
+  // 图例标记的图形宽度
+  itemWidth: 25,
+  // 图例标记的图形高度
+  itemHeight: 14,
+};
+
+// 图例标记的图形与图例文本之间的距离经过我精确推算是5
+export const legendIconTextDiff = 5;

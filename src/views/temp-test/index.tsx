@@ -12,7 +12,7 @@ const TempTest = () => {
     <Wrap>
       <div className="testAxisChart">
         <AxisChart
-          theme="vertical"
+          // vertical/horizontal
           // theme="horizontal"
           data={dataTemp}
           option={{
@@ -20,8 +20,8 @@ const TempTest = () => {
             //   // axisLabel: {
             //   //   color: "red"
             //   // },
-            //   // name: "单位：件数",
-            //   position: "top",
+            //   name: "单位：件数",
+            //   // position: "top",
             // },
             yAxis: {
               name: "单位：件数",
