@@ -22,3 +22,6 @@ export const legendConfig = {
 
 // 图例标记的图形与图例文本之间的距离经过我精确推算是5
 export const legendIconTextDiff = 5;
+
+// 图例底部的margin距离
+export const legendBottomMargin = 8;

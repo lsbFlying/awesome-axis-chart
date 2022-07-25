@@ -6,7 +6,9 @@ import uniq from "lodash/uniq";
 import merge from "lodash/merge";
 import ResizeObserver from "resize-observer-polyfill";
 import {AxisChartProps, AxisChartState, ResizeObserverType} from "./model";
-import {defaultAxisLabelMargin, defaultFontSize, legendConfig, legendIconTextDiff} from "./option";
+import {
+  defaultAxisLabelMargin, defaultFontSize, legendConfig, legendIconTextDiff, legendBottomMargin,
+} from "./option";
 import {EChartsType} from "echarts/types/dist/echarts";
 
 export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartState> {
@@ -68,7 +70,7 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
     const chartWidth = this.chartsInstance.getWidth();
     const categoryDataArray = uniq(data.map(item => item[1]));
     const allSeriesValueDataArray = data.map(item => item[2]);
-    const isVertical = theme === "vertical";
+    const isVertical = theme.includes("vertical");
     const maxValue = max(allSeriesValueDataArray);
     const seriesTypes: string[] = uniq(data.map(item => item[0]));
     
@@ -78,13 +80,24 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
         confine: true,
       },
       series: seriesTypes.map(item => {
+        const dataTemp = data.filter(itemF => itemF[0] === item).map(itemM => itemM[2]);
         return {
           name: item,
           type: "bar",
-          data: data.filter(itemF => itemF[0] === item).map(itemM => itemM[2]),
+          data: isVertical ? dataTemp : reverse(dataTemp),
         };
       }),
     }, option);
+    
+    if (theme === "verticalInverse") {
+      chartOptions.xAxis = merge({ position: "top" }, option.xAxis);
+      chartOptions.yAxis = merge({ inverse: true }, option.yAxis);
+    }
+  
+    if (theme === "horizontalInverse") {
+      chartOptions.xAxis = merge({ inverse: true }, option.xAxis);
+      chartOptions.yAxis = merge({ position: "right" }, option.yAxis);
+    }
     
     const chartOptionValueAxis: any = chartOptions[isVertical ? "yAxis" : "xAxis"];
     const chartOptionCategoryAxis: any = chartOptions[isVertical ? "xAxis" : "yAxis"];
@@ -99,8 +112,10 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
     );
     // 只有一条值轴时，该值轴是否在右侧
     const singleValueAxisAlignRight = chartOptionValueAxis?.position === "right";
-    // 值轴是否有设置上下反向颠倒
+  
+    // 值轴是否有设置上下(垂直时)或者左右(水平时)反向颠倒
     const valueAxisInverse = chartOptionValueAxis?.inverse;
+    
     /**
      * 类目轴添加轴名称或者单位的情况少之又少，
      * 这里暂时不考虑处理类目轴名称，后续看情况考虑是否添加
@@ -114,7 +129,15 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
           ? singleValueAxisAlignRight
             ? [0, valueAxisNamePaddingLeftOrRight, 0, 0]
             : [0, 0, 0, valueAxisNamePaddingLeftOrRight]
-          : [0, valueAxisNameFontSize, 0, 0],
+          :
+          [
+            0,
+            !isVertical && valueAxisInverse
+              ? -valueAxisNameFontSize * (valueAxisName.length - 1)
+              : -valueAxisNameFontSize,
+            0,
+            0,
+          ],
         /**
          * 这个echarts的轴名称单位的水平对齐方式感觉有点反直觉，不知道是bug还是什么，
          * 但是好多个版本都一直如此，需要注意后续如果有版本改动为符合直觉的设置，这里需要同步更改对应
@@ -208,27 +231,44 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
         rowReduceLegendItemWidth = 0;
       }
     });
+  
+    const legendPaddingTopBottom = typeof legendPadding === "number"
+      ? legendPadding
+      : legendPadding.length === 1
+        ? legendPadding[0]
+        : legendPadding.length === 2
+          ? legendPadding[0]
+          : legendPadding[0] + legendPadding[2];
+    
+    const legendRangeHeight = legendObj.legend.itemHeight * legendRows
+      + legendObj.legend.itemGap * (legendRows - 1) + legendPaddingTopBottom;
     
     const valueAxisLabelFontSize = chartOptionValueAxis?.axisLabel?.fontSize || defaultFontSize;
-    const categoryAxisLabelFontSize = chartOptionCategoryAxis?.axisLabel?.fontSize || defaultFontSize;
+    
     const lastValueItemOffset = !isVertical
-      // + valueAxisLabelFontSize * 2 是为了扩大边界展示区域，这样美观舒适
+      /**
+       * / 4是因为值轴数字是一半在split线上，另外值轴的数字是常规汉字的一半字体宽度大小
+       * + valueAxisLabelFontSize * 2 是为了扩大边界展示区域，这样美观舒适
+       */
       ? (`${maxValue}`.length + 1) * valueAxisLabelFontSize / 4  + valueAxisLabelFontSize * 2
       : 0;
+    
+    // 不包含legend的相关尺寸考虑
     const gridTopOrBottom = isVertical
-      //  + categoryAxisLabelFontSize * 2 也是为了扩大边界展示区域，这样美观舒适
-      ? valueAxisLabelFontSize / 2 + categoryAxisLabelFontSize * 2
-      : legendObj.legend.show !== false ? (legendObj.legend.itemHeight || legendConfig.itemHeight) + 8 : 0;
+      // + valueAxisNameFontSize * 2 是为了扩大边界展示区域，这样美观舒适
+      ? valueAxisLabelFontSize / 2 + valueAxisNameFontSize * 2
+      : 0;
+    
     const gridObj = {
       grid: merge({
         top: valueAxisInverse ? 0 : gridTopOrBottom,
-        left: 0,
-        right: lastValueItemOffset,
+        right: !isVertical && valueAxisInverse ? 0 : lastValueItemOffset,
         bottom: valueAxisInverse ? gridTopOrBottom : 0,
+        left: !isVertical && valueAxisInverse ? lastValueItemOffset : 0,
         containLabel: true,
       }, chartOptions.grid),
     };
-    
+    console.log((chartWidth - 30) / seriesTypes[0].length / 12)
     return {
       ...chartOptions,
       ...gridObj,

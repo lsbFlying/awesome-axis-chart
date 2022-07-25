@@ -1,0 +1,20 @@
+export const fontSizeMap = new Map();
+
+fontSizeMap.set("|", 0.1962);
+fontSizeMap.set(".", 0.2654);
+fontSizeMap.set("/", 0.5025);
+fontSizeMap.set("1", 0.4025);
+fontSizeMap.set("0", 0.6);
+fontSizeMap.set("2", 0.6);
+fontSizeMap.set("3", 0.6);
+fontSizeMap.set("4", 0.6);
+fontSizeMap.set("5", 0.6);
+fontSizeMap.set("6", 0.6);
+fontSizeMap.set("7", 0.6);
+fontSizeMap.set("8", 0.6);
+fontSizeMap.set("9", 0.6);
+fontSizeMap.set(" ", 0.3343);
+fontSizeMap.set("a", 0.5602);
+fontSizeMap.set("b", 0.587);
+fontSizeMap.set("c", 0.548);
+fontSizeMap.set("d", 0.5872);
