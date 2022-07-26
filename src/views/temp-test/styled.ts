@@ -14,9 +14,11 @@ export const Wrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  //background-color: black;
   .testAxisChart {
     width: 60vw;
     height: 45vh;
+    //height: 15vh;
     background-color: aliceblue;
   }
 `;

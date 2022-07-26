@@ -13,7 +13,7 @@ const TempTest = () => {
       <div className="testAxisChart">
         <AxisChart
           // vertical/horizontal/verticalInverse/horizontalInverse
-          // theme="horizontal"
+          // theme="verticalInverse"
           data={dataTemp}
           option={{
             xAxis: {
@@ -25,7 +25,7 @@ const TempTest = () => {
               // inverse: true,
             },
             yAxis: {
-              // name: "单位：件数",
+              name: "单位：件数",
               // axisLabel: {
               //   margin: 18,
               // },
@@ -41,13 +41,21 @@ const TempTest = () => {
             // grid: {
             //   bottom: 20,
             // },
-            // legend: {
-            //   // itemWidth: 0,
-            //   // itemGap: 0,
-            //   // bottom: 0,
-            //   show: false,
-            // },
+            legend: {
+              // itemWidth: 0,
+              // itemGap: 0,
+              // top: 0,
+              // bottom: 0,
+              // // left: 0,
+              // right: 0,
+              // width: 190,
+              // padding: 8,
+              // type: "scroll",
+              // orient: "vertical",
+              // show: false,
+            },
           }}
+          // legendPlacement="right"
         />
       </div>
     </Wrap>

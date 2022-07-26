@@ -7,8 +7,10 @@ import merge from "lodash/merge";
 import ResizeObserver from "resize-observer-polyfill";
 import {AxisChartProps, AxisChartState, ResizeObserverType} from "./model";
 import {
-  defaultAxisLabelMargin, defaultFontSize, legendConfig, legendIconTextDiff, legendBottomMargin,
+  defaultAxisLabelMargin, defaultFontSize,
+  legendBottomMargin, legendConfig, legendIconTextDiff,
 } from "./option";
+import {exactCalcStrFontCount, fitFlex} from "./utils";
 import {EChartsType} from "echarts/types/dist/echarts";
 
 export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartState> {
@@ -16,7 +18,9 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
   static defaultProps = {
     data: [],
     theme: "vertical",
+    legendPlacement: "top",
     mergeOption: true,
+    autoFitFlex: false,
   };
   
   state: AxisChartState = {
@@ -36,6 +40,11 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
       this.chartOption();
     });
     this.myObserver.observe(containerRef.current as Element);
+  }
+  
+  componentDidUpdate(prevProps: Readonly<AxisChartProps>, prevState: Readonly<AxisChartState>, snapshot?: any) {
+    const { autoFitFlex } = this.props;
+    fitFlex.autoFitFlex = autoFitFlex;
   }
   
   componentWillUnmount() {
@@ -66,8 +75,9 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
    */
   genDefaultOption = () => {
     if (!this.chartsInstance) return;
-    const { theme, data, option } = this.props;
+    const { theme, data, option, legendPlacement } = this.props;
     const chartWidth = this.chartsInstance.getWidth();
+    const chartHeight = this.chartsInstance.getHeight();
     const categoryDataArray = uniq(data.map(item => item[1]));
     const allSeriesValueDataArray = data.map(item => item[2]);
     const isVertical = theme.includes("vertical");
@@ -104,11 +114,10 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
     
     const valueAxisNameFontSize = chartOptionValueAxis?.nameTextStyle?.fontSize || defaultFontSize;
     const valueAxisName = chartOptionValueAxis?.name || "";
+    
     const valueAxisNamePaddingLeftOrRight = -(
-      `${maxValue}`.length * valueAxisNameFontSize / 2
+      exactCalcStrFontCount(`${maxValue}`) * valueAxisNameFontSize
       + (chartOptionValueAxis?.axisLabel?.margin || defaultAxisLabelMargin)
-      // +2是为了弥补边界的距离处理
-      + 2
     );
     // 只有一条值轴时，该值轴是否在右侧
     const singleValueAxisAlignRight = chartOptionValueAxis?.position === "right";
@@ -133,7 +142,8 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
           [
             0,
             !isVertical && valueAxisInverse
-              ? -valueAxisNameFontSize * (valueAxisName.length - 1)
+              // -1是弥补计算贴边
+              ? -valueAxisNameFontSize * (exactCalcStrFontCount(valueAxisName) - 1)
               : -valueAxisNameFontSize,
             0,
             0,
@@ -198,7 +208,9 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
           ? legendPadding[1]
           : legendPadding[1] + legendPadding[3];
     
-    const legendRangeWidth = chartWidth - legendPaddingLeftRight;
+    const legendNoPaddingWidth = legendObj.legend.width
+      ? legendObj.legend.width - legendPaddingLeftRight
+      : chartWidth - legendPaddingLeftRight;
     
     let legendRows = 1;
     // 每一行累计的legend的宽度
@@ -206,7 +218,8 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
     // 精确算出legend在不实用滚动类型的情况下会换行换几行
     seriesTypes.forEach((item, index, array) => {
       // 当前这个图例的宽度，不包含itemGap的距离
-      const curLegendItemWidth = item.length * (legendObj.legend.textStyle?.fontSize || defaultFontSize)
+      const curLegendItemWidth = exactCalcStrFontCount(item)
+        * (legendObj.legend.textStyle?.fontSize || defaultFontSize)
         + legendObj.legend.itemWidth + legendIconTextDiff + legendObj.legend.itemGap;
       
       rowReduceLegendItemWidth += curLegendItemWidth;
@@ -214,16 +227,16 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
       const nextItem = array[index + 1];
       // 包含itemGap
       const nextLegendItemWidth = nextItem
-        ? nextItem.length * (legendObj.legend.textStyle?.fontSize || defaultFontSize)
-          + legendObj.legend.itemWidth + legendIconTextDiff + legendObj.legend.itemGap
+        ? exactCalcStrFontCount(nextItem) * (legendObj.legend.textStyle?.fontSize || defaultFontSize)
+        + legendObj.legend.itemWidth + legendIconTextDiff + legendObj.legend.itemGap
         : 0;
       
       // 真正的最终legend的宽度需要去除最后一个legend的右侧gap距离
       const zDiffWidth = rowReduceLegendItemWidth - legendObj.legend.itemGap;
-      const condition = zDiffWidth > legendRangeWidth
-        || (zDiffWidth === legendRangeWidth && index < (array.length - 1))
-        || zDiffWidth > legendRangeWidth
-        || (zDiffWidth + nextLegendItemWidth) > legendRangeWidth;
+      const condition = zDiffWidth > legendNoPaddingWidth
+        || (zDiffWidth === legendNoPaddingWidth && index < (array.length - 1))
+        || zDiffWidth > legendNoPaddingWidth
+        || (zDiffWidth + nextLegendItemWidth) > legendNoPaddingWidth;
       
       if (condition) {
         legendRows++;
@@ -231,26 +244,15 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
         rowReduceLegendItemWidth = 0;
       }
     });
-  
-    const legendPaddingTopBottom = typeof legendPadding === "number"
-      ? legendPadding
-      : legendPadding.length === 1
-        ? legendPadding[0]
-        : legendPadding.length === 2
-          ? legendPadding[0]
-          : legendPadding[0] + legendPadding[2];
-    
-    const legendRangeHeight = legendObj.legend.itemHeight * legendRows
-      + legendObj.legend.itemGap * (legendRows - 1) + legendPaddingTopBottom;
     
     const valueAxisLabelFontSize = chartOptionValueAxis?.axisLabel?.fontSize || defaultFontSize;
     
     const lastValueItemOffset = !isVertical
       /**
-       * / 4是因为值轴数字是一半在split线上，另外值轴的数字是常规汉字的一半字体宽度大小
-       * + valueAxisLabelFontSize * 2 是为了扩大边界展示区域，这样美观舒适
+       * maxValue后加一个0是由于echarts绘画max最大值时有时候会突破取整，如99->100
+       * + 1 是弥补计算贴边
        */
-      ? (`${maxValue}`.length + 1) * valueAxisLabelFontSize / 4  + valueAxisLabelFontSize * 2
+      ? (exactCalcStrFontCount(`${maxValue}0`) + 1) * valueAxisLabelFontSize
       : 0;
     
     // 不包含legend的相关尺寸考虑
@@ -259,16 +261,40 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
       ? valueAxisLabelFontSize / 2 + valueAxisNameFontSize * 2
       : 0;
     
-    const gridObj = {
-      grid: merge({
-        top: valueAxisInverse ? 0 : gridTopOrBottom,
-        right: !isVertical && valueAxisInverse ? 0 : lastValueItemOffset,
-        bottom: valueAxisInverse ? gridTopOrBottom : 0,
-        left: !isVertical && valueAxisInverse ? lastValueItemOffset : 0,
-        containLabel: true,
-      }, chartOptions.grid),
+    const legendPaddingTopBottom = typeof legendPadding === "number"
+      ? legendPadding
+      : legendPadding.length === 1
+        ? legendPadding[0]
+        : legendPadding.length === 2
+          ? legendPadding[0]
+          : legendPadding[0] + legendPadding[2];
+    const legendHeight = legendObj.legend.itemHeight * legendRows
+      + legendObj.legend.itemGap * (legendRows - 1) + legendPaddingTopBottom;
+    const legendWidth = legendNoPaddingWidth + legendPaddingLeftRight;
+    
+    // 自动计算的grid边界尺寸距离
+    const autoCalcGridObj = {
+      top: valueAxisInverse ? 0 : gridTopOrBottom,
+      right: !isVertical && valueAxisInverse ? 0 : lastValueItemOffset,
+      bottom: valueAxisInverse ? gridTopOrBottom : 0,
+      left: !isVertical && valueAxisInverse ? lastValueItemOffset : 0,
+      containLabel: true,
     };
-    console.log((chartWidth - 30) / seriesTypes[0].length / 12)
+    
+    const valueAxisNameWidth = 0;
+    // legend的top与left权重大于bottom与right
+    if (legendRows === 1 && (chartWidth) - legendNoPaddingWidth) {}
+    if (legendPlacement === "top") {
+      // autoCalcGridObj.top += (legendHeight + legendBottomMargin);
+    }
+    if (legendPlacement === "right") {
+      autoCalcGridObj.right += legendWidth;
+    }
+    
+    const gridObj = {
+      grid: merge(autoCalcGridObj, chartOptions.grid),
+    };
+    
     return {
       ...chartOptions,
       ...gridObj,
