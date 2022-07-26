@@ -37,14 +37,26 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
     this.chartsInstance = echarts.init(containerRef.current as HTMLElement);
     this.myObserver = new ResizeObserver(() => {
       this.chartsInstance?.resize();
-      this.chartOption();
+      this.handleChartOption();
     });
     this.myObserver.observe(containerRef.current as Element);
   }
   
   componentDidUpdate(prevProps: Readonly<AxisChartProps>, prevState: Readonly<AxisChartState>, snapshot?: any) {
-    const { autoFitFlex } = this.props;
-    fitFlex.autoFitFlex = autoFitFlex;
+    const { autoFitFlex, mergeOption, legendPlacement, theme, option, data } = this.props;
+    const {
+      autoFitFlex: prevAutoFitFlex, mergeOption: prevMergeOption,
+      legendPlacement: prevLegendPlacement, theme: prevTheme,
+      option: prevOption, data: prevData,
+    } = prevProps;
+    if (
+      autoFitFlex !== prevAutoFitFlex || mergeOption !== prevMergeOption
+      || legendPlacement !== prevLegendPlacement || theme !== prevTheme
+      || option !== prevOption || data !== prevData
+    ) {
+      fitFlex.autoFitFlex = autoFitFlex;
+      this.handleChartOption();
+    }
   }
   
   componentWillUnmount() {
@@ -64,7 +76,7 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
   }
   
   /** 图表参数配置 */
-  chartOption = () => {
+  handleChartOption = () => {
     const { mergeOption } = this.props;
     this.chartsInstance?.setOption(this.genDefaultOption(), !mergeOption);
   }
@@ -77,7 +89,6 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
     if (!this.chartsInstance) return;
     const { theme, data, option, legendPlacement } = this.props;
     const chartWidth = this.chartsInstance.getWidth();
-    const chartHeight = this.chartsInstance.getHeight();
     const categoryDataArray = uniq(data.map(item => item[1]));
     const allSeriesValueDataArray = data.map(item => item[2]);
     const isVertical = theme.includes("vertical");
@@ -110,7 +121,6 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
     }
     
     const chartOptionValueAxis: any = chartOptions[isVertical ? "yAxis" : "xAxis"];
-    const chartOptionCategoryAxis: any = chartOptions[isVertical ? "xAxis" : "yAxis"];
     
     const valueAxisNameFontSize = chartOptionValueAxis?.nameTextStyle?.fontSize || defaultFontSize;
     const valueAxisName = chartOptionValueAxis?.name || "";
@@ -124,6 +134,8 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
   
     // 值轴是否有设置上下(垂直时)或者左右(水平时)反向颠倒
     const valueAxisInverse = chartOptionValueAxis?.inverse;
+  
+    const valueAxisLabelFontSize = chartOptionValueAxis?.axisLabel?.fontSize || defaultFontSize;
     
     /**
      * 类目轴添加轴名称或者单位的情况少之又少，
@@ -131,7 +143,12 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
      */
     const valueAxisNameObj = {
       name: valueAxisName,
-      nameGap: valueAxisNameFontSize * 1.5,
+      /**
+       * 本质上是gridTop - valueAxisName字体本身的尺寸
+       * gridTop是valueAxisLabelFontSize / 2 + valueAxisNameFontSize * 2
+       * 去除valueAxisName字体本身的尺寸刚好如下
+       */
+      nameGap: valueAxisLabelFontSize / 2 + valueAxisNameFontSize,
       nameTextStyle: {
         fontSize: valueAxisNameFontSize,
         padding: isVertical
@@ -244,8 +261,6 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
         rowReduceLegendItemWidth = 0;
       }
     });
-    
-    const valueAxisLabelFontSize = chartOptionValueAxis?.axisLabel?.fontSize || defaultFontSize;
     
     const lastValueItemOffset = !isVertical
       /**
