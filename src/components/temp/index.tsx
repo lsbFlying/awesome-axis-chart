@@ -122,20 +122,20 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
     
     const chartOptionValueAxis: any = chartOptions[isVertical ? "yAxis" : "xAxis"];
     
-    const valueAxisNameFontSize = chartOptionValueAxis?.nameTextStyle?.fontSize || defaultFontSize;
+    const valueAxisNameFontSize = fitFlex(chartOptionValueAxis?.nameTextStyle?.fontSize || defaultFontSize);
     const valueAxisName = chartOptionValueAxis?.name || "";
     
     const valueAxisNamePaddingLeftOrRight = -(
       exactCalcStrFontCount(`${maxValue}`) * valueAxisNameFontSize
-      + (chartOptionValueAxis?.axisLabel?.margin || defaultAxisLabelMargin)
+      + fitFlex(chartOptionValueAxis?.axisLabel?.margin || defaultAxisLabelMargin)
     );
     // 只有一条值轴时，该值轴是否在右侧
     const singleValueAxisAlignRight = chartOptionValueAxis?.position === "right";
-  
+    
     // 值轴是否有设置上下(垂直时)或者左右(水平时)反向颠倒
     const valueAxisInverse = chartOptionValueAxis?.inverse;
-  
-    const valueAxisLabelFontSize = chartOptionValueAxis?.axisLabel?.fontSize || defaultFontSize;
+    
+    const valueAxisLabelFontSize = fitFlex(chartOptionValueAxis?.axisLabel?.fontSize || defaultFontSize);
     
     /**
      * 类目轴添加轴名称或者单位的情况少之又少，
@@ -216,14 +216,21 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
     const legendObj = {
       legend: merge(legendConfig, chartOptions?.legend),
     };
+    legendObj.legend.padding = fitFlex(legendObj.legend.padding);
+    legendObj.legend.itemGap = fitFlex(legendObj.legend.itemGap);
+    legendObj.legend.itemWidth = fitFlex(legendObj.legend.itemWidth);
+    legendObj.legend.itemHeight = fitFlex(legendObj.legend.itemHeight);
+    
     const legendPadding = legendObj.legend.padding;
-    const legendPaddingLeftRight = typeof legendPadding === "number"
-      ? legendPadding
-      : legendPadding.length === 1
+    const legendPaddingLeftRight = fitFlex(
+      typeof legendPadding === "number"
+        ? legendPadding
+        : legendPadding.length === 1
         ? legendPadding[0]
         : legendPadding.length === 2 || legendPadding.length === 3
           ? legendPadding[1]
-          : legendPadding[1] + legendPadding[3];
+          : legendPadding[1] + legendPadding[3]
+    );
     
     const legendNoPaddingWidth = legendObj.legend.width
       ? legendObj.legend.width - legendPaddingLeftRight
@@ -232,11 +239,12 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
     let legendRows = 1;
     // 每一行累计的legend的宽度
     let rowReduceLegendItemWidth = 0;
+    const legendFontSize = fitFlex(legendObj.legend.textStyle?.fontSize || defaultFontSize);
     // 精确算出legend在不实用滚动类型的情况下会换行换几行
     seriesTypes.forEach((item, index, array) => {
       // 当前这个图例的宽度，不包含itemGap的距离
       const curLegendItemWidth = exactCalcStrFontCount(item)
-        * (legendObj.legend.textStyle?.fontSize || defaultFontSize)
+        * legendFontSize
         + legendObj.legend.itemWidth + legendIconTextDiff + legendObj.legend.itemGap;
       
       rowReduceLegendItemWidth += curLegendItemWidth;
@@ -244,7 +252,7 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
       const nextItem = array[index + 1];
       // 包含itemGap
       const nextLegendItemWidth = nextItem
-        ? exactCalcStrFontCount(nextItem) * (legendObj.legend.textStyle?.fontSize || defaultFontSize)
+        ? exactCalcStrFontCount(nextItem) * legendFontSize
         + legendObj.legend.itemWidth + legendIconTextDiff + legendObj.legend.itemGap
         : 0;
       
@@ -276,13 +284,15 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
       ? valueAxisLabelFontSize / 2 + valueAxisNameFontSize * 2
       : 0;
     
-    const legendPaddingTopBottom = typeof legendPadding === "number"
-      ? legendPadding
-      : legendPadding.length === 1
+    const legendPaddingTopBottom = fitFlex(
+      typeof legendPadding === "number"
+        ? legendPadding
+        : legendPadding.length === 1
         ? legendPadding[0]
         : legendPadding.length === 2
           ? legendPadding[0]
-          : legendPadding[0] + legendPadding[2];
+          : legendPadding[0] + legendPadding[2]
+    );
     const legendHeight = legendObj.legend.itemHeight * legendRows
       + legendObj.legend.itemGap * (legendRows - 1) + legendPaddingTopBottom;
     const legendWidth = legendNoPaddingWidth + legendPaddingLeftRight;
