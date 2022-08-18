@@ -12,7 +12,7 @@ export interface AxisChartState {
   containerRef: RefObject<HTMLElement>;
 }
 
-export type AxisChartDataType = [string, string, number];
+export type AxisChartDataType = [string, string | number, number | string];
 
 export interface AxisChartProps extends AxisChartICSS {
   /**
