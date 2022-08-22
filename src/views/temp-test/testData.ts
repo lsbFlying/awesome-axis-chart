@@ -137,400 +137,446 @@ export const testData1 = [
   // { type: "衣物销量", clothing: "袜子100", sales: 27 },
 ];
 
-export const testData2 = [{
-  "name": "本次",
-  "data": [{"value": null, "realDate": "2022-07-01(星期五)"}, {
-    "value": null,
-    "realDate": "2022-07-02(星期六)",
-  }, {"value": null, "realDate": "2022-07-03(星期日)"}, {"value": null, "realDate": "2022-07-04(星期一)"}, {
-    "value": null,
-    "realDate": "2022-07-05(星期二)",
-  }, {"value": null, "realDate": "2022-07-06(星期三)"}, {"value": null, "realDate": "2022-07-07(星期四)"}, {
-    "value": null,
-    "realDate": "2022-07-08(星期五)",
-  }, {"value": null, "realDate": "2022-07-09(星期六)"}, {"value": null, "realDate": "2022-07-10(星期日)"}, {
-    "value": null,
-    "realDate": "2022-07-11(星期一)",
-  }, {"value": null, "realDate": "2022-07-12(星期二)"}, {"value": null, "realDate": "2022-07-13(星期三)"}, {
-    "value": null,
-    "realDate": "2022-07-14(星期四)",
-  }, {"value": null, "realDate": "2022-07-15(星期五)"}, {"value": null, "realDate": "2022-07-16(星期六)"}, {
-    "value": null,
-    "realDate": "2022-07-17(星期日)",
-  }, {"value": null, "realDate": "2022-07-18(星期一)"}, {"value": null, "realDate": "2022-07-19(星期二)"}, {
-    "value": null,
-    "realDate": "2022-07-20(星期三)",
-  }, {"value": null, "realDate": "2022-07-21(星期四)"}, {"value": null, "realDate": "2022-07-22(星期五)"}, {
-    "value": null,
-    "realDate": "2022-07-23(星期六)",
-  }, {"value": null, "realDate": "2022-07-24(星期日)"}, {"value": null, "realDate": "2022-07-25(星期一)"}, {
-    "value": null,
-    "realDate": "2022-07-26(星期二)",
-  }, {"value": null, "realDate": "2022-07-27(星期三)"}, {"value": null, "realDate": "2022-07-28(星期四)"}, {
-    "value": null,
-    "realDate": "2022-07-29(星期五)",
-  }, {"value": null, "realDate": "2022-07-30(星期六)"}, {"value": null, "realDate": "2022-07-31(星期日)"}, {
-    "value": null,
-    "realDate": "2022-08-01(星期一)",
-  }, {"value": null, "realDate": "2022-08-02(星期二)"}, {"value": null, "realDate": "2022-08-03(星期三)"}, {
-    "value": null,
-    "realDate": "2022-08-04(星期四)",
-  }, {"value": null, "realDate": "2022-08-05(星期五)"}, {"value": null, "realDate": "2022-08-06(星期六)"}, {
-    "value": null,
-    "realDate": "2022-08-07(星期日)",
-  }, {"value": null, "realDate": "2022-08-08(星期一)"}, {"value": null, "realDate": "2022-08-09(星期二)"}, {
-    "value": null,
-    "realDate": "2022-08-10(星期三)",
-  }, {"value": null, "realDate": "2022-08-11(星期四)"}, {"value": null, "realDate": "2022-08-12(星期五)"}, {
-    "value": null,
-    "realDate": "2022-08-13(星期六)",
-  }, {"value": null, "realDate": "2022-08-14(星期日)"}, {"value": null, "realDate": "2022-08-15(星期一)"}, {
-    "value": null,
-    "realDate": "2022-08-16(星期二)",
-  }, {"value": null, "realDate": "2022-08-17(星期三)"}, {"value": null, "realDate": "2022-08-18(星期四)"}, {
-    "value": null,
-    "realDate": "2022-08-19(星期五)",
-  }, {"value": null, "realDate": "2022-08-20(星期六)"}, {"value": null, "realDate": "2022-08-21(星期日)"}, {
-    "value": null,
-    "realDate": "2022-08-22(星期一)",
-  }, {"value": null, "realDate": "2022-08-23(星期二)"}, {"value": null, "realDate": "2022-08-24(星期三)"}, {
-    "value": null,
-    "realDate": "2022-08-25(星期四)",
-  }, {"value": null, "realDate": "2022-08-26(星期五)"}, {"value": null, "realDate": "2022-08-27(星期六)"}, {
-    "value": null,
-    "realDate": "2022-08-28(星期日)",
-  }, {"value": null, "realDate": "2022-08-29(星期一)"}, {"value": null, "realDate": "2022-08-30(星期二)"}, {
-    "value": null,
-    "realDate": "2022-08-31(星期三)",
-  }],
-}, {
-  "name": "预估",
-  "data": [{"value": null, "realDate": "2022-07-01(星期五)"}, {
-    "value": null,
-    "realDate": "2022-07-02(星期六)",
-  }, {"value": null, "realDate": "2022-07-03(星期日)"}, {"value": null, "realDate": "2022-07-04(星期一)"}, {
-    "value": null,
-    "realDate": "2022-07-05(星期二)",
-  }, {"value": null, "realDate": "2022-07-06(星期三)"}, {"value": null, "realDate": "2022-07-07(星期四)"}, {
-    "value": null,
-    "realDate": "2022-07-08(星期五)",
-  }, {"value": null, "realDate": "2022-07-09(星期六)"}, {"value": null, "realDate": "2022-07-10(星期日)"}, {
-    "value": null,
-    "realDate": "2022-07-11(星期一)",
-  }, {"value": null, "realDate": "2022-07-12(星期二)"}, {"value": null, "realDate": "2022-07-13(星期三)"}, {
-    "value": null,
-    "realDate": "2022-07-14(星期四)",
-  }, {"value": null, "realDate": "2022-07-15(星期五)"}, {"value": null, "realDate": "2022-07-16(星期六)"}, {
-    "value": null,
-    "realDate": "2022-07-17(星期日)",
-  }, {"value": null, "realDate": "2022-07-18(星期一)"}, {"value": null, "realDate": "2022-07-19(星期二)"}, {
-    "value": null,
-    "realDate": "2022-07-20(星期三)",
-  }, {"value": null, "realDate": "2022-07-21(星期四)"}, {"value": null, "realDate": "2022-07-22(星期五)"}, {
-    "value": null,
-    "realDate": "2022-07-23(星期六)",
-  }, {"value": null, "realDate": "2022-07-24(星期日)"}, {"value": null, "realDate": "2022-07-25(星期一)"}, {
-    "value": null,
-    "realDate": "2022-07-26(星期二)",
-  }, {"value": null, "realDate": "2022-07-27(星期三)"}, {"value": null, "realDate": "2022-07-28(星期四)"}, {
-    "value": null,
-    "realDate": "2022-07-29(星期五)",
-  }, {"value": null, "realDate": "2022-07-30(星期六)"}, {"value": null, "realDate": "2022-07-31(星期日)"}, {
-    "value": null,
-    "realDate": "2022-08-01(星期一)",
-  }, {"value": null, "realDate": "2022-08-02(星期二)"}, {"value": null, "realDate": "2022-08-03(星期三)"}, {
-    "value": null,
-    "realDate": "2022-08-04(星期四)",
-  }, {"value": null, "realDate": "2022-08-05(星期五)"}, {"value": null, "realDate": "2022-08-06(星期六)"}, {
-    "value": null,
-    "realDate": "2022-08-07(星期日)",
-  }, {"value": null, "realDate": "2022-08-08(星期一)"}, {"value": null, "realDate": "2022-08-09(星期二)"}, {
-    "value": null,
-    "realDate": "2022-08-10(星期三)",
-  }, {"value": null, "realDate": "2022-08-11(星期四)"}, {"value": null, "realDate": "2022-08-12(星期五)"}, {
-    "value": null,
-    "realDate": "2022-08-13(星期六)",
-  }, {"value": null, "realDate": "2022-08-14(星期日)"}, {"value": null, "realDate": "2022-08-15(星期一)"}, {
-    "value": null,
-    "realDate": "2022-08-16(星期二)",
-  }, {"value": null, "realDate": "2022-08-17(星期三)"}, {"value": null, "realDate": "2022-08-18(星期四)"}, {
-    "value": null,
-    "realDate": "2022-08-19(星期五)",
-  }, {"value": null, "realDate": "2022-08-20(星期六)"}, {"value": null, "realDate": "2022-08-21(星期日)"}, {
-    "value": null,
-    "realDate": "2022-08-22(星期一)",
-  }, {"value": null, "realDate": "2022-08-23(星期二)"}, {"value": null, "realDate": "2022-08-24(星期三)"}, {
-    "value": null,
-    "realDate": "2022-08-25(星期四)",
-  }, {"value": null, "realDate": "2022-08-26(星期五)"}, {"value": null, "realDate": "2022-08-27(星期六)"}, {
-    "value": null,
-    "realDate": "2022-08-28(星期日)",
-  }, {"value": null, "realDate": "2022-08-29(星期一)"}, {"value": null, "realDate": "2022-08-30(星期二)"}, {
-    "value": null,
-    "realDate": "2022-08-31(星期三)",
-  }],
-}, {
-  "name": "今年",
-  "data": [{"value": null, "realDate": "2022-07-01(星期五)"}, {
-    "value": null,
-    "realDate": "2022-07-02(星期六)",
-  }, {"value": null, "realDate": "2022-07-03(星期日)"}, {"value": null, "realDate": "2022-07-04(星期一)"}, {
-    "value": null,
-    "realDate": "2022-07-05(星期二)",
-  }, {"value": null, "realDate": "2022-07-06(星期三)"}, {"value": null, "realDate": "2022-07-07(星期四)"}, {
-    "value": null,
-    "realDate": "2022-07-08(星期五)",
-  }, {"value": null, "realDate": "2022-07-09(星期六)"}, {"value": null, "realDate": "2022-07-10(星期日)"}, {
-    "value": null,
-    "realDate": "2022-07-11(星期一)",
-  }, {"value": null, "realDate": "2022-07-12(星期二)"}, {"value": null, "realDate": "2022-07-13(星期三)"}, {
-    "value": null,
-    "realDate": "2022-07-14(星期四)",
-  }, {"value": null, "realDate": "2022-07-15(星期五)"}, {"value": null, "realDate": "2022-07-16(星期六)"}, {
-    "value": null,
-    "realDate": "2022-07-17(星期日)",
-  }, {"value": null, "realDate": "2022-07-18(星期一)"}, {"value": null, "realDate": "2022-07-19(星期二)"}, {
-    "value": null,
-    "realDate": "2022-07-20(星期三)",
-  }, {"value": null, "realDate": "2022-07-21(星期四)"}, {"value": null, "realDate": "2022-07-22(星期五)"}, {
-    "value": null,
-    "realDate": "2022-07-23(星期六)",
-  }, {"value": null, "realDate": "2022-07-24(星期日)"}, {"value": null, "realDate": "2022-07-25(星期一)"}, {
-    "value": null,
-    "realDate": "2022-07-26(星期二)",
-  }, {"value": null, "realDate": "2022-07-27(星期三)"}, {"value": null, "realDate": "2022-07-28(星期四)"}, {
-    "value": null,
-    "realDate": "2022-07-29(星期五)",
-  }, {"value": null, "realDate": "2022-07-30(星期六)"}, {"value": null, "realDate": "2022-07-31(星期日)"}, {
-    "value": null,
-    "realDate": "2022-08-01(星期一)",
-  }, {"value": null, "realDate": "2022-08-02(星期二)"}, {"value": null, "realDate": "2022-08-03(星期三)"}, {
-    "value": null,
-    "realDate": "2022-08-04(星期四)",
-  }, {"value": null, "realDate": "2022-08-05(星期五)"}, {"value": null, "realDate": "2022-08-06(星期六)"}, {
-    "value": null,
-    "realDate": "2022-08-07(星期日)",
-  }, {"value": null, "realDate": "2022-08-08(星期一)"}, {"value": null, "realDate": "2022-08-09(星期二)"}, {
-    "value": null,
-    "realDate": "2022-08-10(星期三)",
-  }, {"value": null, "realDate": "2022-08-11(星期四)"}, {"value": null, "realDate": "2022-08-12(星期五)"}, {
-    "value": null,
-    "realDate": "2022-08-13(星期六)",
-  }, {"value": null, "realDate": "2022-08-14(星期日)"}, {"value": null, "realDate": "2022-08-15(星期一)"}, {
-    "value": null,
-    "realDate": "2022-08-16(星期二)",
-  }, {"value": null, "realDate": "2022-08-17(星期三)"}, {"value": null, "realDate": "2022-08-18(星期四)"}, {
-    "value": null,
-    "realDate": "2022-08-19(星期五)",
-  }, {"value": null, "realDate": "2022-08-20(星期六)"}, {"value": null, "realDate": "2022-08-21(星期日)"}, {
-    "value": null,
-    "realDate": "2022-08-22(星期一)",
-  }, {"value": null, "realDate": "2022-08-23(星期二)"}, {"value": null, "realDate": "2022-08-24(星期三)"}, {
-    "value": null,
-    "realDate": "2022-08-25(星期四)",
-  }, {"value": null, "realDate": "2022-08-26(星期五)"}, {"value": null, "realDate": "2022-08-27(星期六)"}, {
-    "value": null,
-    "realDate": "2022-08-28(星期日)",
-  }, {"value": null, "realDate": "2022-08-29(星期一)"}, {"value": null, "realDate": "2022-08-30(星期二)"}, {
-    "value": null,
-    "realDate": "2022-08-31(星期三)",
-  }],
-}, {
-  "name": "去年",
-  "data": [{"value": null, "realDate": "2021-07-02(星期五)"}, {
-    "value": null,
-    "realDate": "2021-07-03(星期六)",
-  }, {"value": null, "realDate": "2021-07-04(星期日)"}, {"value": null, "realDate": "2021-07-05(星期一)"}, {
-    "value": null,
-    "realDate": "2021-07-06(星期二)",
-  }, {"value": null, "realDate": "2021-07-07(星期三)"}, {"value": null, "realDate": "2021-07-08(星期四)"}, {
-    "value": null,
-    "realDate": "2021-07-09(星期五)",
-  }, {"value": null, "realDate": "2021-07-10(星期六)"}, {"value": null, "realDate": "2021-07-11(星期日)"}, {
-    "value": null,
-    "realDate": "2021-07-12(星期一)",
-  }, {"value": null, "realDate": "2021-07-13(星期二)"}, {"value": null, "realDate": "2021-07-14(星期三)"}, {
-    "value": null,
-    "realDate": "2021-07-15(星期四)",
-  }, {"value": null, "realDate": "2021-07-16(星期五)"}, {"value": null, "realDate": "2021-07-17(星期六)"}, {
-    "value": null,
-    "realDate": "2021-07-18(星期日)",
-  }, {"value": null, "realDate": "2021-07-19(星期一)"}, {"value": null, "realDate": "2021-07-20(星期二)"}, {
-    "value": null,
-    "realDate": "2021-07-21(星期三)",
-  }, {"value": null, "realDate": "2021-07-22(星期四)"}, {"value": null, "realDate": "2021-07-23(星期五)"}, {
-    "value": null,
-    "realDate": "2021-07-24(星期六)",
-  }, {"value": null, "realDate": "2021-07-25(星期日)"}, {"value": null, "realDate": "2021-07-26(星期一)"}, {
-    "value": null,
-    "realDate": "2021-07-27(星期二)",
-  }, {"value": null, "realDate": "2021-07-28(星期三)"}, {"value": null, "realDate": "2021-07-29(星期四)"}, {
-    "value": null,
-    "realDate": "2021-07-30(星期五)",
-  }, {"value": null, "realDate": "2021-07-31(星期六)"}, {"value": null, "realDate": "2021-08-01(星期日)"}, {
-    "value": null,
-    "realDate": "2021-08-02(星期一)",
-  }, {"value": null, "realDate": "2021-08-03(星期二)"}, {"value": null, "realDate": "2021-08-04(星期三)"}, {
-    "value": null,
-    "realDate": "2021-08-05(星期四)",
-  }, {"value": null, "realDate": "2021-08-06(星期五)"}, {"value": null, "realDate": "2021-08-07(星期六)"}, {
-    "value": null,
-    "realDate": "2021-08-08(星期日)",
-  }, {"value": null, "realDate": "2021-08-09(星期一)"}, {"value": null, "realDate": "2021-08-10(星期二)"}, {
-    "value": null,
-    "realDate": "2021-08-11(星期三)",
-  }, {"value": null, "realDate": "2021-08-12(星期四)"}, {"value": null, "realDate": "2021-08-13(星期五)"}, {
-    "value": null,
-    "realDate": "2021-08-14(星期六)",
-  }, {"value": null, "realDate": "2021-08-15(星期日)"}, {"value": null, "realDate": "2021-08-16(星期一)"}, {
-    "value": null,
-    "realDate": "2021-08-17(星期二)",
-  }, {"value": null, "realDate": "2021-08-18(星期三)"}, {"value": null, "realDate": "2021-08-19(星期四)"}, {
-    "value": null,
-    "realDate": "2021-08-20(星期五)",
-  }, {"value": null, "realDate": "2021-08-21(星期六)"}, {"value": null, "realDate": "2021-08-22(星期日)"}, {
-    "value": null,
-    "realDate": "2021-08-23(星期一)",
-  }, {"value": null, "realDate": "2021-08-24(星期二)"}, {"value": null, "realDate": "2021-08-25(星期三)"}, {
-    "value": null,
-    "realDate": "2021-08-26(星期四)",
-  }, {"value": null, "realDate": "2021-08-27(星期五)"}, {"value": null, "realDate": "2021-08-28(星期六)"}, {
-    "value": null,
-    "realDate": "2021-08-29(星期日)",
-  }, {"value": null, "realDate": "2021-08-30(星期一)"}, {"value": null, "realDate": "2021-08-31(星期二)"}, {
-    "value": null,
-    "realDate": "2021-09-01(星期三)",
-  }],
-}, {
-  "name": "前年",
-  "data": [{"value": null, "realDate": "2020-07-03(星期五)"}, {
-    "value": null,
-    "realDate": "2020-07-04(星期六)",
-  }, {"value": null, "realDate": "2020-07-05(星期日)"}, {"value": null, "realDate": "2020-07-06(星期一)"}, {
-    "value": null,
-    "realDate": "2020-07-07(星期二)",
-  }, {"value": null, "realDate": "2020-07-08(星期三)"}, {"value": null, "realDate": "2020-07-09(星期四)"}, {
-    "value": null,
-    "realDate": "2020-07-10(星期五)",
-  }, {"value": null, "realDate": "2020-07-11(星期六)"}, {"value": null, "realDate": "2020-07-12(星期日)"}, {
-    "value": null,
-    "realDate": "2020-07-13(星期一)",
-  }, {"value": null, "realDate": "2020-07-14(星期二)"}, {"value": null, "realDate": "2020-07-15(星期三)"}, {
-    "value": null,
-    "realDate": "2020-07-16(星期四)",
-  }, {"value": null, "realDate": "2020-07-17(星期五)"}, {"value": null, "realDate": "2020-07-18(星期六)"}, {
-    "value": null,
-    "realDate": "2020-07-19(星期日)",
-  }, {"value": null, "realDate": "2020-07-20(星期一)"}, {"value": null, "realDate": "2020-07-21(星期二)"}, {
-    "value": null,
-    "realDate": "2020-07-22(星期三)",
-  }, {"value": null, "realDate": "2020-07-23(星期四)"}, {"value": null, "realDate": "2020-07-24(星期五)"}, {
-    "value": null,
-    "realDate": "2020-07-25(星期六)",
-  }, {"value": null, "realDate": "2020-07-26(星期日)"}, {"value": null, "realDate": "2020-07-27(星期一)"}, {
-    "value": null,
-    "realDate": "2020-07-28(星期二)",
-  }, {"value": null, "realDate": "2020-07-29(星期三)"}, {"value": null, "realDate": "2020-07-30(星期四)"}, {
-    "value": null,
-    "realDate": "2020-07-31(星期五)",
-  }, {"value": null, "realDate": "2020-08-01(星期六)"}, {"value": null, "realDate": "2020-08-02(星期日)"}, {
-    "value": null,
-    "realDate": "2020-08-03(星期一)",
-  }, {"value": null, "realDate": "2020-08-04(星期二)"}, {"value": null, "realDate": "2020-08-05(星期三)"}, {
-    "value": null,
-    "realDate": "2020-08-06(星期四)",
-  }, {"value": null, "realDate": "2020-08-07(星期五)"}, {"value": null, "realDate": "2020-08-08(星期六)"}, {
-    "value": null,
-    "realDate": "2020-08-09(星期日)",
-  }, {"value": null, "realDate": "2020-08-10(星期一)"}, {"value": null, "realDate": "2020-08-11(星期二)"}, {
-    "value": null,
-    "realDate": "2020-08-12(星期三)",
-  }, {"value": null, "realDate": "2020-08-13(星期四)"}, {"value": null, "realDate": "2020-08-14(星期五)"}, {
-    "value": null,
-    "realDate": "2020-08-15(星期六)",
-  }, {"value": null, "realDate": "2020-08-16(星期日)"}, {"value": null, "realDate": "2020-08-17(星期一)"}, {
-    "value": null,
-    "realDate": "2020-08-18(星期二)",
-  }, {"value": null, "realDate": "2020-08-19(星期三)"}, {"value": null, "realDate": "2020-08-20(星期四)"}, {
-    "value": null,
-    "realDate": "2020-08-21(星期五)",
-  }, {"value": null, "realDate": "2020-08-22(星期六)"}, {"value": null, "realDate": "2020-08-23(星期日)"}, {
-    "value": null,
-    "realDate": "2020-08-24(星期一)",
-  }, {"value": null, "realDate": "2020-08-25(星期二)"}, {"value": null, "realDate": "2020-08-26(星期三)"}, {
-    "value": null,
-    "realDate": "2020-08-27(星期四)",
-  }, {"value": null, "realDate": "2020-08-28(星期五)"}, {"value": null, "realDate": "2020-08-29(星期六)"}, {
-    "value": null,
-    "realDate": "2020-08-30(星期日)",
-  }, {"value": null, "realDate": "2020-08-31(星期一)"}, {"value": null, "realDate": "2020-09-01(星期二)"}, {
-    "value": null,
-    "realDate": "2020-09-02(星期三)",
-  }],
-}, {
-  "name": "大前年",
-  "data": [{"value": null, "realDate": "2019-07-05(星期五)"}, {
-    "value": null,
-    "realDate": "2019-07-06(星期六)",
-  }, {"value": null, "realDate": "2019-07-07(星期日)"}, {"value": null, "realDate": "2019-07-08(星期一)"}, {
-    "value": null,
-    "realDate": "2019-07-09(星期二)",
-  }, {"value": null, "realDate": "2019-07-10(星期三)"}, {"value": null, "realDate": "2019-07-11(星期四)"}, {
-    "value": null,
-    "realDate": "2019-07-12(星期五)",
-  }, {"value": null, "realDate": "2019-07-13(星期六)"}, {"value": null, "realDate": "2019-07-14(星期日)"}, {
-    "value": null,
-    "realDate": "2019-07-15(星期一)",
-  }, {"value": null, "realDate": "2019-07-16(星期二)"}, {"value": null, "realDate": "2019-07-17(星期三)"}, {
-    "value": null,
-    "realDate": "2019-07-18(星期四)",
-  }, {"value": null, "realDate": "2019-07-19(星期五)"}, {"value": null, "realDate": "2019-07-20(星期六)"}, {
-    "value": null,
-    "realDate": "2019-07-21(星期日)",
-  }, {"value": null, "realDate": "2019-07-22(星期一)"}, {"value": null, "realDate": "2019-07-23(星期二)"}, {
-    "value": null,
-    "realDate": "2019-07-24(星期三)",
-  }, {"value": null, "realDate": "2019-07-25(星期四)"}, {"value": null, "realDate": "2019-07-26(星期五)"}, {
-    "value": null,
-    "realDate": "2019-07-27(星期六)",
-  }, {"value": null, "realDate": "2019-07-28(星期日)"}, {"value": null, "realDate": "2019-07-29(星期一)"}, {
-    "value": null,
-    "realDate": "2019-07-30(星期二)",
-  }, {"value": null, "realDate": "2019-07-31(星期三)"}, {"value": null, "realDate": "2019-08-01(星期四)"}, {
-    "value": null,
-    "realDate": "2019-08-02(星期五)",
-  }, {"value": null, "realDate": "2019-08-03(星期六)"}, {"value": null, "realDate": "2019-08-04(星期日)"}, {
-    "value": null,
-    "realDate": "2019-08-05(星期一)",
-  }, {"value": null, "realDate": "2019-08-06(星期二)"}, {"value": null, "realDate": "2019-08-07(星期三)"}, {
-    "value": null,
-    "realDate": "2019-08-08(星期四)",
-  }, {"value": null, "realDate": "2019-08-09(星期五)"}, {"value": null, "realDate": "2019-08-10(星期六)"}, {
-    "value": null,
-    "realDate": "2019-08-11(星期日)",
-  }, {"value": null, "realDate": "2019-08-12(星期一)"}, {"value": null, "realDate": "2019-08-13(星期二)"}, {
-    "value": null,
-    "realDate": "2019-08-14(星期三)",
-  }, {"value": null, "realDate": "2019-08-15(星期四)"}, {"value": null, "realDate": "2019-08-16(星期五)"}, {
-    "value": null,
-    "realDate": "2019-08-17(星期六)",
-  }, {"value": null, "realDate": "2019-08-18(星期日)"}, {"value": null, "realDate": "2019-08-19(星期一)"}, {
-    "value": null,
-    "realDate": "2019-08-20(星期二)",
-  }, {"value": null, "realDate": "2019-08-21(星期三)"}, {"value": null, "realDate": "2019-08-22(星期四)"}, {
-    "value": null,
-    "realDate": "2019-08-23(星期五)",
-  }, {"value": null, "realDate": "2019-08-24(星期六)"}, {"value": null, "realDate": "2019-08-25(星期日)"}, {
-    "value": null,
-    "realDate": "2019-08-26(星期一)",
-  }, {"value": null, "realDate": "2019-08-27(星期二)"}, {"value": null, "realDate": "2019-08-28(星期三)"}, {
-    "value": null,
-    "realDate": "2019-08-29(星期四)",
-  }, {"value": null, "realDate": "2019-08-30(星期五)"}, {"value": null, "realDate": "2019-08-31(星期六)"}, {
-    "value": null,
-    "realDate": "2019-09-01(星期日)",
-  }, {"value": null, "realDate": "2019-09-02(星期一)"}, {"value": null, "realDate": "2019-09-03(星期二)"}, {
-    "value": null,
-    "realDate": "2019-09-04(星期三)",
-  }],
-}];
+export const testData2 = [
+  {
+    type: "bar",
+    name: "衣物衣物衣物衣物衣物销量",
+    data: [
+      { name: "衬衫", value: 5 },
+      { name: "羊毛衫", value: 20 },
+      { name: "雪纺衫", value: 36 },
+      { name: "裤子", value: 10 },
+      { name: "高跟鞋", value: 10 },
+      { name: "袜子", value: 56 },
+    ],
+  },
+  {
+    type: "bar",
+    name: "衣物衣物衣物衣物衣物库存",
+    data: [
+      { name: "衬衫", value: 2 },
+      { name: "羊毛衫", value: 9 },
+      { name: "雪纺衫", value: 17 },
+      { name: "裤子", value: 3 },
+      { name: "高跟鞋", value: 28 },
+      { name: "袜子", value: 12 },
+    ],
+  },
+  {
+    type: "bar",
+    name: "衣物衣物衣物衣物衣物破损",
+    data: [
+      { name: "衬衫", value: 5 },
+      { name: "羊毛衫", value: 23 },
+      { name: "雪纺衫", value: 8 },
+      { name: "裤子", value: 11 },
+      { name: "高跟鞋", value: 7 },
+      { name: "袜子", value: 32 },
+    ],
+  },
+];
+
+export const testData3 = [
+  {
+    "name": "本次",
+    "data": [{"value": null, "realDate": "2022-07-01(星期五)"}, {
+      "value": null,
+      "realDate": "2022-07-02(星期六)",
+    }, {"value": null, "realDate": "2022-07-03(星期日)"}, {"value": null, "realDate": "2022-07-04(星期一)"}, {
+      "value": null,
+      "realDate": "2022-07-05(星期二)",
+    }, {"value": null, "realDate": "2022-07-06(星期三)"}, {"value": null, "realDate": "2022-07-07(星期四)"}, {
+      "value": null,
+      "realDate": "2022-07-08(星期五)",
+    }, {"value": null, "realDate": "2022-07-09(星期六)"}, {"value": null, "realDate": "2022-07-10(星期日)"}, {
+      "value": null,
+      "realDate": "2022-07-11(星期一)",
+    }, {"value": null, "realDate": "2022-07-12(星期二)"}, {"value": null, "realDate": "2022-07-13(星期三)"}, {
+      "value": null,
+      "realDate": "2022-07-14(星期四)",
+    }, {"value": null, "realDate": "2022-07-15(星期五)"}, {"value": null, "realDate": "2022-07-16(星期六)"}, {
+      "value": null,
+      "realDate": "2022-07-17(星期日)",
+    }, {"value": null, "realDate": "2022-07-18(星期一)"}, {"value": null, "realDate": "2022-07-19(星期二)"}, {
+      "value": null,
+      "realDate": "2022-07-20(星期三)",
+    }, {"value": null, "realDate": "2022-07-21(星期四)"}, {"value": null, "realDate": "2022-07-22(星期五)"}, {
+      "value": null,
+      "realDate": "2022-07-23(星期六)",
+    }, {"value": null, "realDate": "2022-07-24(星期日)"}, {"value": null, "realDate": "2022-07-25(星期一)"}, {
+      "value": null,
+      "realDate": "2022-07-26(星期二)",
+    }, {"value": null, "realDate": "2022-07-27(星期三)"}, {"value": null, "realDate": "2022-07-28(星期四)"}, {
+      "value": null,
+      "realDate": "2022-07-29(星期五)",
+    }, {"value": null, "realDate": "2022-07-30(星期六)"}, {"value": null, "realDate": "2022-07-31(星期日)"}, {
+      "value": null,
+      "realDate": "2022-08-01(星期一)",
+    }, {"value": null, "realDate": "2022-08-02(星期二)"}, {"value": null, "realDate": "2022-08-03(星期三)"}, {
+      "value": null,
+      "realDate": "2022-08-04(星期四)",
+    }, {"value": null, "realDate": "2022-08-05(星期五)"}, {"value": null, "realDate": "2022-08-06(星期六)"}, {
+      "value": null,
+      "realDate": "2022-08-07(星期日)",
+    }, {"value": null, "realDate": "2022-08-08(星期一)"}, {"value": null, "realDate": "2022-08-09(星期二)"}, {
+      "value": null,
+      "realDate": "2022-08-10(星期三)",
+    }, {"value": null, "realDate": "2022-08-11(星期四)"}, {"value": null, "realDate": "2022-08-12(星期五)"}, {
+      "value": null,
+      "realDate": "2022-08-13(星期六)",
+    }, {"value": null, "realDate": "2022-08-14(星期日)"}, {"value": null, "realDate": "2022-08-15(星期一)"}, {
+      "value": null,
+      "realDate": "2022-08-16(星期二)",
+    }, {"value": null, "realDate": "2022-08-17(星期三)"}, {"value": null, "realDate": "2022-08-18(星期四)"}, {
+      "value": null,
+      "realDate": "2022-08-19(星期五)",
+    }, {"value": null, "realDate": "2022-08-20(星期六)"}, {"value": null, "realDate": "2022-08-21(星期日)"}, {
+      "value": null,
+      "realDate": "2022-08-22(星期一)",
+    }, {"value": null, "realDate": "2022-08-23(星期二)"}, {"value": null, "realDate": "2022-08-24(星期三)"}, {
+      "value": null,
+      "realDate": "2022-08-25(星期四)",
+    }, {"value": null, "realDate": "2022-08-26(星期五)"}, {"value": null, "realDate": "2022-08-27(星期六)"}, {
+      "value": null,
+      "realDate": "2022-08-28(星期日)",
+    }, {"value": null, "realDate": "2022-08-29(星期一)"}, {"value": null, "realDate": "2022-08-30(星期二)"}, {
+      "value": null,
+      "realDate": "2022-08-31(星期三)",
+    }],
+  },
+  {
+    "name": "预估",
+    "data": [{"value": null, "realDate": "2022-07-01(星期五)"}, {
+      "value": null,
+      "realDate": "2022-07-02(星期六)",
+    }, {"value": null, "realDate": "2022-07-03(星期日)"}, {"value": null, "realDate": "2022-07-04(星期一)"}, {
+      "value": null,
+      "realDate": "2022-07-05(星期二)",
+    }, {"value": null, "realDate": "2022-07-06(星期三)"}, {"value": null, "realDate": "2022-07-07(星期四)"}, {
+      "value": null,
+      "realDate": "2022-07-08(星期五)",
+    }, {"value": null, "realDate": "2022-07-09(星期六)"}, {"value": null, "realDate": "2022-07-10(星期日)"}, {
+      "value": null,
+      "realDate": "2022-07-11(星期一)",
+    }, {"value": null, "realDate": "2022-07-12(星期二)"}, {"value": null, "realDate": "2022-07-13(星期三)"}, {
+      "value": null,
+      "realDate": "2022-07-14(星期四)",
+    }, {"value": null, "realDate": "2022-07-15(星期五)"}, {"value": null, "realDate": "2022-07-16(星期六)"}, {
+      "value": null,
+      "realDate": "2022-07-17(星期日)",
+    }, {"value": null, "realDate": "2022-07-18(星期一)"}, {"value": null, "realDate": "2022-07-19(星期二)"}, {
+      "value": null,
+      "realDate": "2022-07-20(星期三)",
+    }, {"value": null, "realDate": "2022-07-21(星期四)"}, {"value": null, "realDate": "2022-07-22(星期五)"}, {
+      "value": null,
+      "realDate": "2022-07-23(星期六)",
+    }, {"value": null, "realDate": "2022-07-24(星期日)"}, {"value": null, "realDate": "2022-07-25(星期一)"}, {
+      "value": null,
+      "realDate": "2022-07-26(星期二)",
+    }, {"value": null, "realDate": "2022-07-27(星期三)"}, {"value": null, "realDate": "2022-07-28(星期四)"}, {
+      "value": null,
+      "realDate": "2022-07-29(星期五)",
+    }, {"value": null, "realDate": "2022-07-30(星期六)"}, {"value": null, "realDate": "2022-07-31(星期日)"}, {
+      "value": null,
+      "realDate": "2022-08-01(星期一)",
+    }, {"value": null, "realDate": "2022-08-02(星期二)"}, {"value": null, "realDate": "2022-08-03(星期三)"}, {
+      "value": null,
+      "realDate": "2022-08-04(星期四)",
+    }, {"value": null, "realDate": "2022-08-05(星期五)"}, {"value": null, "realDate": "2022-08-06(星期六)"}, {
+      "value": null,
+      "realDate": "2022-08-07(星期日)",
+    }, {"value": null, "realDate": "2022-08-08(星期一)"}, {"value": null, "realDate": "2022-08-09(星期二)"}, {
+      "value": null,
+      "realDate": "2022-08-10(星期三)",
+    }, {"value": null, "realDate": "2022-08-11(星期四)"}, {"value": null, "realDate": "2022-08-12(星期五)"}, {
+      "value": null,
+      "realDate": "2022-08-13(星期六)",
+    }, {"value": null, "realDate": "2022-08-14(星期日)"}, {"value": null, "realDate": "2022-08-15(星期一)"}, {
+      "value": null,
+      "realDate": "2022-08-16(星期二)",
+    }, {"value": null, "realDate": "2022-08-17(星期三)"}, {"value": null, "realDate": "2022-08-18(星期四)"}, {
+      "value": null,
+      "realDate": "2022-08-19(星期五)",
+    }, {"value": null, "realDate": "2022-08-20(星期六)"}, {"value": null, "realDate": "2022-08-21(星期日)"}, {
+      "value": null,
+      "realDate": "2022-08-22(星期一)",
+    }, {"value": null, "realDate": "2022-08-23(星期二)"}, {"value": null, "realDate": "2022-08-24(星期三)"}, {
+      "value": null,
+      "realDate": "2022-08-25(星期四)",
+    }, {"value": null, "realDate": "2022-08-26(星期五)"}, {"value": null, "realDate": "2022-08-27(星期六)"}, {
+      "value": null,
+      "realDate": "2022-08-28(星期日)",
+    }, {"value": null, "realDate": "2022-08-29(星期一)"}, {"value": null, "realDate": "2022-08-30(星期二)"}, {
+      "value": null,
+      "realDate": "2022-08-31(星期三)",
+    }],
+  },
+  {
+    "name": "今年",
+    "data": [{"value": null, "realDate": "2022-07-01(星期五)"}, {
+      "value": null,
+      "realDate": "2022-07-02(星期六)",
+    }, {"value": null, "realDate": "2022-07-03(星期日)"}, {"value": null, "realDate": "2022-07-04(星期一)"}, {
+      "value": null,
+      "realDate": "2022-07-05(星期二)",
+    }, {"value": null, "realDate": "2022-07-06(星期三)"}, {"value": null, "realDate": "2022-07-07(星期四)"}, {
+      "value": null,
+      "realDate": "2022-07-08(星期五)",
+    }, {"value": null, "realDate": "2022-07-09(星期六)"}, {"value": null, "realDate": "2022-07-10(星期日)"}, {
+      "value": null,
+      "realDate": "2022-07-11(星期一)",
+    }, {"value": null, "realDate": "2022-07-12(星期二)"}, {"value": null, "realDate": "2022-07-13(星期三)"}, {
+      "value": null,
+      "realDate": "2022-07-14(星期四)",
+    }, {"value": null, "realDate": "2022-07-15(星期五)"}, {"value": null, "realDate": "2022-07-16(星期六)"}, {
+      "value": null,
+      "realDate": "2022-07-17(星期日)",
+    }, {"value": null, "realDate": "2022-07-18(星期一)"}, {"value": null, "realDate": "2022-07-19(星期二)"}, {
+      "value": null,
+      "realDate": "2022-07-20(星期三)",
+    }, {"value": null, "realDate": "2022-07-21(星期四)"}, {"value": null, "realDate": "2022-07-22(星期五)"}, {
+      "value": null,
+      "realDate": "2022-07-23(星期六)",
+    }, {"value": null, "realDate": "2022-07-24(星期日)"}, {"value": null, "realDate": "2022-07-25(星期一)"}, {
+      "value": null,
+      "realDate": "2022-07-26(星期二)",
+    }, {"value": null, "realDate": "2022-07-27(星期三)"}, {"value": null, "realDate": "2022-07-28(星期四)"}, {
+      "value": null,
+      "realDate": "2022-07-29(星期五)",
+    }, {"value": null, "realDate": "2022-07-30(星期六)"}, {"value": null, "realDate": "2022-07-31(星期日)"}, {
+      "value": null,
+      "realDate": "2022-08-01(星期一)",
+    }, {"value": null, "realDate": "2022-08-02(星期二)"}, {"value": null, "realDate": "2022-08-03(星期三)"}, {
+      "value": null,
+      "realDate": "2022-08-04(星期四)",
+    }, {"value": null, "realDate": "2022-08-05(星期五)"}, {"value": null, "realDate": "2022-08-06(星期六)"}, {
+      "value": null,
+      "realDate": "2022-08-07(星期日)",
+    }, {"value": null, "realDate": "2022-08-08(星期一)"}, {"value": null, "realDate": "2022-08-09(星期二)"}, {
+      "value": null,
+      "realDate": "2022-08-10(星期三)",
+    }, {"value": null, "realDate": "2022-08-11(星期四)"}, {"value": null, "realDate": "2022-08-12(星期五)"}, {
+      "value": null,
+      "realDate": "2022-08-13(星期六)",
+    }, {"value": null, "realDate": "2022-08-14(星期日)"}, {"value": null, "realDate": "2022-08-15(星期一)"}, {
+      "value": null,
+      "realDate": "2022-08-16(星期二)",
+    }, {"value": null, "realDate": "2022-08-17(星期三)"}, {"value": null, "realDate": "2022-08-18(星期四)"}, {
+      "value": null,
+      "realDate": "2022-08-19(星期五)",
+    }, {"value": null, "realDate": "2022-08-20(星期六)"}, {"value": null, "realDate": "2022-08-21(星期日)"}, {
+      "value": null,
+      "realDate": "2022-08-22(星期一)",
+    }, {"value": null, "realDate": "2022-08-23(星期二)"}, {"value": null, "realDate": "2022-08-24(星期三)"}, {
+      "value": null,
+      "realDate": "2022-08-25(星期四)",
+    }, {"value": null, "realDate": "2022-08-26(星期五)"}, {"value": null, "realDate": "2022-08-27(星期六)"}, {
+      "value": null,
+      "realDate": "2022-08-28(星期日)",
+    }, {"value": null, "realDate": "2022-08-29(星期一)"}, {"value": null, "realDate": "2022-08-30(星期二)"}, {
+      "value": null,
+      "realDate": "2022-08-31(星期三)",
+    }],
+  },
+  {
+    "name": "去年",
+    "data": [{"value": null, "realDate": "2021-07-02(星期五)"}, {
+      "value": null,
+      "realDate": "2021-07-03(星期六)",
+    }, {"value": null, "realDate": "2021-07-04(星期日)"}, {"value": null, "realDate": "2021-07-05(星期一)"}, {
+      "value": null,
+      "realDate": "2021-07-06(星期二)",
+    }, {"value": null, "realDate": "2021-07-07(星期三)"}, {"value": null, "realDate": "2021-07-08(星期四)"}, {
+      "value": null,
+      "realDate": "2021-07-09(星期五)",
+    }, {"value": null, "realDate": "2021-07-10(星期六)"}, {"value": null, "realDate": "2021-07-11(星期日)"}, {
+      "value": null,
+      "realDate": "2021-07-12(星期一)",
+    }, {"value": null, "realDate": "2021-07-13(星期二)"}, {"value": null, "realDate": "2021-07-14(星期三)"}, {
+      "value": null,
+      "realDate": "2021-07-15(星期四)",
+    }, {"value": null, "realDate": "2021-07-16(星期五)"}, {"value": null, "realDate": "2021-07-17(星期六)"}, {
+      "value": null,
+      "realDate": "2021-07-18(星期日)",
+    }, {"value": null, "realDate": "2021-07-19(星期一)"}, {"value": null, "realDate": "2021-07-20(星期二)"}, {
+      "value": null,
+      "realDate": "2021-07-21(星期三)",
+    }, {"value": null, "realDate": "2021-07-22(星期四)"}, {"value": null, "realDate": "2021-07-23(星期五)"}, {
+      "value": null,
+      "realDate": "2021-07-24(星期六)",
+    }, {"value": null, "realDate": "2021-07-25(星期日)"}, {"value": null, "realDate": "2021-07-26(星期一)"}, {
+      "value": null,
+      "realDate": "2021-07-27(星期二)",
+    }, {"value": null, "realDate": "2021-07-28(星期三)"}, {"value": null, "realDate": "2021-07-29(星期四)"}, {
+      "value": null,
+      "realDate": "2021-07-30(星期五)",
+    }, {"value": null, "realDate": "2021-07-31(星期六)"}, {"value": null, "realDate": "2021-08-01(星期日)"}, {
+      "value": null,
+      "realDate": "2021-08-02(星期一)",
+    }, {"value": null, "realDate": "2021-08-03(星期二)"}, {"value": null, "realDate": "2021-08-04(星期三)"}, {
+      "value": null,
+      "realDate": "2021-08-05(星期四)",
+    }, {"value": null, "realDate": "2021-08-06(星期五)"}, {"value": null, "realDate": "2021-08-07(星期六)"}, {
+      "value": null,
+      "realDate": "2021-08-08(星期日)",
+    }, {"value": null, "realDate": "2021-08-09(星期一)"}, {"value": null, "realDate": "2021-08-10(星期二)"}, {
+      "value": null,
+      "realDate": "2021-08-11(星期三)",
+    }, {"value": null, "realDate": "2021-08-12(星期四)"}, {"value": null, "realDate": "2021-08-13(星期五)"}, {
+      "value": null,
+      "realDate": "2021-08-14(星期六)",
+    }, {"value": null, "realDate": "2021-08-15(星期日)"}, {"value": null, "realDate": "2021-08-16(星期一)"}, {
+      "value": null,
+      "realDate": "2021-08-17(星期二)",
+    }, {"value": null, "realDate": "2021-08-18(星期三)"}, {"value": null, "realDate": "2021-08-19(星期四)"}, {
+      "value": null,
+      "realDate": "2021-08-20(星期五)",
+    }, {"value": null, "realDate": "2021-08-21(星期六)"}, {"value": null, "realDate": "2021-08-22(星期日)"}, {
+      "value": null,
+      "realDate": "2021-08-23(星期一)",
+    }, {"value": null, "realDate": "2021-08-24(星期二)"}, {"value": null, "realDate": "2021-08-25(星期三)"}, {
+      "value": null,
+      "realDate": "2021-08-26(星期四)",
+    }, {"value": null, "realDate": "2021-08-27(星期五)"}, {"value": null, "realDate": "2021-08-28(星期六)"}, {
+      "value": null,
+      "realDate": "2021-08-29(星期日)",
+    }, {"value": null, "realDate": "2021-08-30(星期一)"}, {"value": null, "realDate": "2021-08-31(星期二)"}, {
+      "value": null,
+      "realDate": "2021-09-01(星期三)",
+    }],
+  },
+  {
+    "name": "前年",
+    "data": [{"value": null, "realDate": "2020-07-03(星期五)"}, {
+      "value": null,
+      "realDate": "2020-07-04(星期六)",
+    }, {"value": null, "realDate": "2020-07-05(星期日)"}, {"value": null, "realDate": "2020-07-06(星期一)"}, {
+      "value": null,
+      "realDate": "2020-07-07(星期二)",
+    }, {"value": null, "realDate": "2020-07-08(星期三)"}, {"value": null, "realDate": "2020-07-09(星期四)"}, {
+      "value": null,
+      "realDate": "2020-07-10(星期五)",
+    }, {"value": null, "realDate": "2020-07-11(星期六)"}, {"value": null, "realDate": "2020-07-12(星期日)"}, {
+      "value": null,
+      "realDate": "2020-07-13(星期一)",
+    }, {"value": null, "realDate": "2020-07-14(星期二)"}, {"value": null, "realDate": "2020-07-15(星期三)"}, {
+      "value": null,
+      "realDate": "2020-07-16(星期四)",
+    }, {"value": null, "realDate": "2020-07-17(星期五)"}, {"value": null, "realDate": "2020-07-18(星期六)"}, {
+      "value": null,
+      "realDate": "2020-07-19(星期日)",
+    }, {"value": null, "realDate": "2020-07-20(星期一)"}, {"value": null, "realDate": "2020-07-21(星期二)"}, {
+      "value": null,
+      "realDate": "2020-07-22(星期三)",
+    }, {"value": null, "realDate": "2020-07-23(星期四)"}, {"value": null, "realDate": "2020-07-24(星期五)"}, {
+      "value": null,
+      "realDate": "2020-07-25(星期六)",
+    }, {"value": null, "realDate": "2020-07-26(星期日)"}, {"value": null, "realDate": "2020-07-27(星期一)"}, {
+      "value": null,
+      "realDate": "2020-07-28(星期二)",
+    }, {"value": null, "realDate": "2020-07-29(星期三)"}, {"value": null, "realDate": "2020-07-30(星期四)"}, {
+      "value": null,
+      "realDate": "2020-07-31(星期五)",
+    }, {"value": null, "realDate": "2020-08-01(星期六)"}, {"value": null, "realDate": "2020-08-02(星期日)"}, {
+      "value": null,
+      "realDate": "2020-08-03(星期一)",
+    }, {"value": null, "realDate": "2020-08-04(星期二)"}, {"value": null, "realDate": "2020-08-05(星期三)"}, {
+      "value": null,
+      "realDate": "2020-08-06(星期四)",
+    }, {"value": null, "realDate": "2020-08-07(星期五)"}, {"value": null, "realDate": "2020-08-08(星期六)"}, {
+      "value": null,
+      "realDate": "2020-08-09(星期日)",
+    }, {"value": null, "realDate": "2020-08-10(星期一)"}, {"value": null, "realDate": "2020-08-11(星期二)"}, {
+      "value": null,
+      "realDate": "2020-08-12(星期三)",
+    }, {"value": null, "realDate": "2020-08-13(星期四)"}, {"value": null, "realDate": "2020-08-14(星期五)"}, {
+      "value": null,
+      "realDate": "2020-08-15(星期六)",
+    }, {"value": null, "realDate": "2020-08-16(星期日)"}, {"value": null, "realDate": "2020-08-17(星期一)"}, {
+      "value": null,
+      "realDate": "2020-08-18(星期二)",
+    }, {"value": null, "realDate": "2020-08-19(星期三)"}, {"value": null, "realDate": "2020-08-20(星期四)"}, {
+      "value": null,
+      "realDate": "2020-08-21(星期五)",
+    }, {"value": null, "realDate": "2020-08-22(星期六)"}, {"value": null, "realDate": "2020-08-23(星期日)"}, {
+      "value": null,
+      "realDate": "2020-08-24(星期一)",
+    }, {"value": null, "realDate": "2020-08-25(星期二)"}, {"value": null, "realDate": "2020-08-26(星期三)"}, {
+      "value": null,
+      "realDate": "2020-08-27(星期四)",
+    }, {"value": null, "realDate": "2020-08-28(星期五)"}, {"value": null, "realDate": "2020-08-29(星期六)"}, {
+      "value": null,
+      "realDate": "2020-08-30(星期日)",
+    }, {"value": null, "realDate": "2020-08-31(星期一)"}, {"value": null, "realDate": "2020-09-01(星期二)"}, {
+      "value": null,
+      "realDate": "2020-09-02(星期三)",
+    }],
+  },
+  {
+    "name": "大前年",
+    "data": [{"value": null, "realDate": "2019-07-05(星期五)"}, {
+      "value": null,
+      "realDate": "2019-07-06(星期六)",
+    }, {"value": null, "realDate": "2019-07-07(星期日)"}, {"value": null, "realDate": "2019-07-08(星期一)"}, {
+      "value": null,
+      "realDate": "2019-07-09(星期二)",
+    }, {"value": null, "realDate": "2019-07-10(星期三)"}, {"value": null, "realDate": "2019-07-11(星期四)"}, {
+      "value": null,
+      "realDate": "2019-07-12(星期五)",
+    }, {"value": null, "realDate": "2019-07-13(星期六)"}, {"value": null, "realDate": "2019-07-14(星期日)"}, {
+      "value": null,
+      "realDate": "2019-07-15(星期一)",
+    }, {"value": null, "realDate": "2019-07-16(星期二)"}, {"value": null, "realDate": "2019-07-17(星期三)"}, {
+      "value": null,
+      "realDate": "2019-07-18(星期四)",
+    }, {"value": null, "realDate": "2019-07-19(星期五)"}, {"value": null, "realDate": "2019-07-20(星期六)"}, {
+      "value": null,
+      "realDate": "2019-07-21(星期日)",
+    }, {"value": null, "realDate": "2019-07-22(星期一)"}, {"value": null, "realDate": "2019-07-23(星期二)"}, {
+      "value": null,
+      "realDate": "2019-07-24(星期三)",
+    }, {"value": null, "realDate": "2019-07-25(星期四)"}, {"value": null, "realDate": "2019-07-26(星期五)"}, {
+      "value": null,
+      "realDate": "2019-07-27(星期六)",
+    }, {"value": null, "realDate": "2019-07-28(星期日)"}, {"value": null, "realDate": "2019-07-29(星期一)"}, {
+      "value": null,
+      "realDate": "2019-07-30(星期二)",
+    }, {"value": null, "realDate": "2019-07-31(星期三)"}, {"value": null, "realDate": "2019-08-01(星期四)"}, {
+      "value": null,
+      "realDate": "2019-08-02(星期五)",
+    }, {"value": null, "realDate": "2019-08-03(星期六)"}, {"value": null, "realDate": "2019-08-04(星期日)"}, {
+      "value": null,
+      "realDate": "2019-08-05(星期一)",
+    }, {"value": null, "realDate": "2019-08-06(星期二)"}, {"value": null, "realDate": "2019-08-07(星期三)"}, {
+      "value": null,
+      "realDate": "2019-08-08(星期四)",
+    }, {"value": null, "realDate": "2019-08-09(星期五)"}, {"value": null, "realDate": "2019-08-10(星期六)"}, {
+      "value": null,
+      "realDate": "2019-08-11(星期日)",
+    }, {"value": null, "realDate": "2019-08-12(星期一)"}, {"value": null, "realDate": "2019-08-13(星期二)"}, {
+      "value": null,
+      "realDate": "2019-08-14(星期三)",
+    }, {"value": null, "realDate": "2019-08-15(星期四)"}, {"value": null, "realDate": "2019-08-16(星期五)"}, {
+      "value": null,
+      "realDate": "2019-08-17(星期六)",
+    }, {"value": null, "realDate": "2019-08-18(星期日)"}, {"value": null, "realDate": "2019-08-19(星期一)"}, {
+      "value": null,
+      "realDate": "2019-08-20(星期二)",
+    }, {"value": null, "realDate": "2019-08-21(星期三)"}, {"value": null, "realDate": "2019-08-22(星期四)"}, {
+      "value": null,
+      "realDate": "2019-08-23(星期五)",
+    }, {"value": null, "realDate": "2019-08-24(星期六)"}, {"value": null, "realDate": "2019-08-25(星期日)"}, {
+      "value": null,
+      "realDate": "2019-08-26(星期一)",
+    }, {"value": null, "realDate": "2019-08-27(星期二)"}, {"value": null, "realDate": "2019-08-28(星期三)"}, {
+      "value": null,
+      "realDate": "2019-08-29(星期四)",
+    }, {"value": null, "realDate": "2019-08-30(星期五)"}, {"value": null, "realDate": "2019-08-31(星期六)"}, {
+      "value": null,
+      "realDate": "2019-09-01(星期日)",
+    }, {"value": null, "realDate": "2019-09-02(星期一)"}, {"value": null, "realDate": "2019-09-03(星期二)"}, {
+      "value": null,
+      "realDate": "2019-09-04(星期三)",
+    }],
+  },
+];

@@ -1,20 +1,24 @@
-import React from "react";
+import React, {useState} from "react";
 import { AxisChart } from "../../components/temp";
 import { Wrap } from "./styled";
-import {testData1} from "./testData";
-import {AxisChartDataType} from "../../components/temp/model";
+import { testData2 } from "./testData";
 
 const TempTest = () => {
-  const dataTemp: AxisChartDataType[] = testData1.map(item =>
-    [item.type, item.clothing, item.sales]
-  );
+  const [autoFit, setAutoFit] = useState(false);
+  
   return (
     <Wrap>
+      <div>
+        <button onClick={() => setAutoFit(!autoFit)}>测试按钮</button>
+      </div>
       <div className="testAxisChart">
         <AxisChart
           // vertical/horizontal/verticalInverse/horizontalInverse
           // theme="verticalInverse"
-          data={dataTemp}
+          data={testData2}
+          // categoryData={[]}
+          pureDataItem={false}
+          autoFit={autoFit}
           option={{
             xAxis: {
               // axisLabel: {

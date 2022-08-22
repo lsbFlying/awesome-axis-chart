@@ -2,16 +2,16 @@ import React from "react";
 import * as echarts from "echarts";
 import max from "lodash/max";
 import reverse from "lodash/reverse";
-import uniq from "lodash/uniq";
 import merge from "lodash/merge";
 import ResizeObserver from "resize-observer-polyfill";
-import {AxisChartProps, AxisChartState, ResizeObserverType} from "./model";
+import {AxisChartDataItem, AxisChartProps, AxisChartState, ResizeObserverType} from "./model";
 import {
   defaultAxisLabelMargin, defaultFontSize,
   legendBottomMargin, legendConfig, legendIconTextDiff,
 } from "./option";
-import {exactCalcStrFontCount, fitFlex} from "./utils";
+import {exactCalcStrFontCount, fit} from "./utils";
 import {EChartsType} from "echarts/types/dist/echarts";
+import {testData2} from "../../views/temp-test/testData";
 
 export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartState> {
   
@@ -20,7 +20,7 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
     theme: "vertical",
     legendPlacement: "top",
     mergeOption: true,
-    autoFitFlex: false,
+    autoFit: false,
   };
   
   state: AxisChartState = {
@@ -36,32 +36,32 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
     const { containerRef } = this.state;
     this.chartsInstance = echarts.init(containerRef.current as HTMLElement);
     this.myObserver = new ResizeObserver(() => {
-      this.chartsInstance?.resize();
+      (this.chartsInstance as EChartsType).resize();
       this.handleChartOption();
     });
     this.myObserver.observe(containerRef.current as Element);
   }
   
   componentDidUpdate(prevProps: Readonly<AxisChartProps>, prevState: Readonly<AxisChartState>, snapshot?: any) {
-    const { autoFitFlex, mergeOption, legendPlacement, theme, option, data } = this.props;
+    const { autoFit, mergeOption, legendPlacement, theme, option, data, categoryData, pureDataItem } = this.props;
     const {
-      autoFitFlex: prevAutoFitFlex, mergeOption: prevMergeOption,
-      legendPlacement: prevLegendPlacement, theme: prevTheme,
-      option: prevOption, data: prevData,
+      autoFit: prevAutoFit, mergeOption: prevMergeOption, legendPlacement: prevLegendPlacement,
+      theme: prevTheme, option: prevOption, data: prevData, categoryData: prevCategoryData,
+      pureDataItem: prevPureDataItem,
     } = prevProps;
     if (
-      autoFitFlex !== prevAutoFitFlex || mergeOption !== prevMergeOption
-      || legendPlacement !== prevLegendPlacement || theme !== prevTheme
-      || option !== prevOption || data !== prevData
+      data !== prevData || categoryData !== prevCategoryData || option !== prevOption
+      || legendPlacement !== prevLegendPlacement || theme !== prevTheme || autoFit !== prevAutoFit
+      || mergeOption !== prevMergeOption || pureDataItem !== prevPureDataItem
     ) {
-      fitFlex.autoFitFlex = autoFitFlex;
+      fit.autoFit = autoFit;
       this.handleChartOption();
     }
   }
   
   componentWillUnmount() {
     const { containerRef } = this.state;
-    this.chartsInstance?.dispose();
+    (this.chartsInstance as EChartsType).dispose();
     this.myObserver?.unobserve(containerRef.current as Element);
   }
   
@@ -78,7 +78,7 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
   /** 图表参数配置 */
   handleChartOption = () => {
     const { mergeOption } = this.props;
-    this.chartsInstance?.setOption(this.genDefaultOption(), !mergeOption);
+    (this.chartsInstance as EChartsType).setOption(this.genDefaultOption(), !mergeOption);
   }
   
   /**
@@ -86,28 +86,22 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
    * 主要针对grid以及各种边界的距离处理
    */
   genDefaultOption = () => {
-    if (!this.chartsInstance) return;
-    const { theme, data, option, legendPlacement } = this.props;
-    const chartWidth = this.chartsInstance.getWidth();
-    const categoryDataArray = uniq(data.map(item => item[1]));
-    const allSeriesValueDataArray = data.map(item => item[2]);
+    const { theme, data, option, legendPlacement, categoryData, pureDataItem } = this.props;
+    const chartWidth = (this.chartsInstance as EChartsType).getWidth();
+    // @ts-ignore
+    const categoryDataArray = categoryData || (pureDataItem ? [] : data[0]?.data.map((item: AxisChartDataItem) => item.name));
     const isVertical = theme.includes("vertical");
-    const maxValue = max(allSeriesValueDataArray);
-    const seriesTypes: string[] = uniq(data.map(item => item[0]));
+    // const allSeriesValueDataArray = data.map(item => item[2]);
+    // const maxValue = max(allSeriesValueDataArray);
+    const maxValue = 60;
+    const seriesNames = data.map(item => `${item.name}`);
     
     // 先合并，然后取合并值配置或者无配置则按默认配置处理
     const chartOptions = merge({
       tooltip: {
         confine: true,
       },
-      series: seriesTypes.map(item => {
-        const dataTemp = data.filter(itemF => itemF[0] === item).map(itemM => itemM[2]);
-        return {
-          name: item,
-          type: "bar",
-          data: isVertical ? dataTemp : reverse(dataTemp),
-        };
-      }),
+      series: testData2,
     }, option);
     
     if (theme === "verticalInverse") {
@@ -122,12 +116,12 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
     
     const chartOptionValueAxis: any = chartOptions[isVertical ? "yAxis" : "xAxis"];
     
-    const valueAxisNameFontSize = fitFlex(chartOptionValueAxis?.nameTextStyle?.fontSize || defaultFontSize);
+    const valueAxisNameFontSize = fit(chartOptionValueAxis?.nameTextStyle?.fontSize || defaultFontSize);
     const valueAxisName = chartOptionValueAxis?.name || "";
     
     const valueAxisNamePaddingLeftOrRight = -(
-      exactCalcStrFontCount(`${maxValue}`) * valueAxisNameFontSize
-      + fitFlex(chartOptionValueAxis?.axisLabel?.margin || defaultAxisLabelMargin)
+      exactCalcStrFontCount(maxValue) * valueAxisNameFontSize
+      + fit(chartOptionValueAxis?.axisLabel?.margin || defaultAxisLabelMargin)
     );
     // 只有一条值轴时，该值轴是否在右侧
     const singleValueAxisAlignRight = chartOptionValueAxis?.position === "right";
@@ -135,7 +129,7 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
     // 值轴是否有设置上下(垂直时)或者左右(水平时)反向颠倒
     const valueAxisInverse = chartOptionValueAxis?.inverse;
     
-    const valueAxisLabelFontSize = fitFlex(chartOptionValueAxis?.axisLabel?.fontSize || defaultFontSize);
+    const valueAxisLabelFontSize = fit(chartOptionValueAxis?.axisLabel?.fontSize || defaultFontSize);
     
     /**
      * 类目轴添加轴名称或者单位的情况少之又少，
@@ -216,13 +210,13 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
     const legendObj = {
       legend: merge(legendConfig, chartOptions?.legend),
     };
-    legendObj.legend.padding = fitFlex(legendObj.legend.padding);
-    legendObj.legend.itemGap = fitFlex(legendObj.legend.itemGap);
-    legendObj.legend.itemWidth = fitFlex(legendObj.legend.itemWidth);
-    legendObj.legend.itemHeight = fitFlex(legendObj.legend.itemHeight);
+    legendObj.legend.padding = fit(legendObj.legend.padding);
+    legendObj.legend.itemGap = fit(legendObj.legend.itemGap);
+    legendObj.legend.itemWidth = fit(legendObj.legend.itemWidth);
+    legendObj.legend.itemHeight = fit(legendObj.legend.itemHeight);
     
     const legendPadding = legendObj.legend.padding;
-    const legendPaddingLeftRight = fitFlex(
+    const legendPaddingLeftRight = fit(
       typeof legendPadding === "number"
         ? legendPadding
         : legendPadding.length === 1
@@ -239,9 +233,9 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
     let legendRows = 1;
     // 每一行累计的legend的宽度
     let rowReduceLegendItemWidth = 0;
-    const legendFontSize = fitFlex(legendObj.legend.textStyle?.fontSize || defaultFontSize);
+    const legendFontSize = fit(legendObj.legend.textStyle?.fontSize || defaultFontSize);
     // 精确算出legend在不实用滚动类型的情况下会换行换几行
-    seriesTypes.forEach((item, index, array) => {
+    seriesNames.forEach((item, index, array) => {
       // 当前这个图例的宽度，不包含itemGap的距离
       const curLegendItemWidth = exactCalcStrFontCount(item)
         * legendFontSize
@@ -284,7 +278,7 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
       ? valueAxisLabelFontSize / 2 + valueAxisNameFontSize * 2
       : 0;
     
-    const legendPaddingTopBottom = fitFlex(
+    const legendPaddingTopBottom = fit(
       typeof legendPadding === "number"
         ? legendPadding
         : legendPadding.length === 1

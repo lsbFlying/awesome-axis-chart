@@ -12,15 +12,30 @@ export interface AxisChartState {
   containerRef: RefObject<HTMLElement>;
 }
 
-export type AxisChartDataType = [string, string | number, number | string];
+export interface AxisChartDataItem {
+  /** 数据项名称 */
+  name: string | number;
+  /** 单个数据项的数值 */
+  value: number | string;
+}
+
+export interface AxisChartData {
+  /** 系列名 */
+  name: string | number;
+  /** 该系列数据 */
+  data: AxisChartDataItem[] | (number | string)[];
+}
 
 export interface AxisChartProps extends AxisChartICSS {
+  /** 数据源 */
+  data: AxisChartData[];
+  /** 类目轴数据 */
+  categoryData?: (string | number)[];
   /**
-   * 数据源：[seriesData, categoryData, valueData][]
-   *          系列数据      类目数据       值数据
-   *          图例legend   x轴(横向即y轴)  y轴(横向即x轴)
+   * 数据源的data数组的类型是AxisChartDataItem类型还是(number | string)类型
+   * 为true则是(number | string)类型，false则是AxisChartDataItem类型
    */
-  data: AxisChartDataType[];
+  pureDataItem?: boolean;
   /** echarts的配置参数(echarts官方文档上的配置项) */
   option?: any;
   /**
@@ -42,9 +57,9 @@ export interface AxisChartProps extends AxisChartICSS {
    */
   mergeOption: boolean;
   /**
-   * fitFlex自适应计算尺寸是在没有scale缩放页面屏幕的情况下使用
-   * 外部props也可以控制是否禁用fitFlex的适配尺寸计算
+   * autoFit自适应计算尺寸是在没有scale缩放页面屏幕的情况下使用
+   * 外部props也可以控制是否禁用autoFit的适配尺寸计算
    * 比如有scale缩放的时候即禁用，或者别的业务逻辑的情况下使用等等
    */
-  autoFitFlex: boolean;
+  autoFit: boolean;
 }
