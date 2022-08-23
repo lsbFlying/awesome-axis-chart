@@ -15,9 +15,9 @@ const TempTest = () => {
       <div className="testAxisChart">
         <AxisChart
           // vertical/horizontal/verticalInverse/horizontalInverse
-          // theme="verticalInverse"
-          data={testData3}
-          categoryData={testCategoryData}
+          // theme="horizontalInverse"
+          data={testData2}
+          // categoryData={testCategoryData}
           // pureData={false}
           autoFit={autoFit}
           // legendPlacement="left"

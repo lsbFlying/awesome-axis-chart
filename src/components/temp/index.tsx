@@ -101,8 +101,9 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
       },
       series: data.map(item => ({
         ...item,
-        type: "line",
-        // type: "bar",
+        data: !isVertical ? reverse(item.data) : item.data,
+        // type: "line",
+        type: "bar",
       })),
     }, option);
     
@@ -124,8 +125,8 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
     // todo legend图例的点击以及值轴的自定义渲染都会影响maxValue的确定
     // const allSeriesValueDataArray = data.map(item => item[2]);
     // const maxValue = max(allSeriesValueDataArray);
-    // const maxValue = 60;
-    const maxValue = 50000000;
+    const maxValue = 60;
+    // const maxValue = 50000000;
     
     // 值轴是否有设置上下(垂直时)或者左右(水平时)反向颠倒
     const valueAxisInverse = chartOptionValueAxis?.inverse;
@@ -246,13 +247,6 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
     } else {
       legendRows = seriesNames.length;
     }
-    
-    /**
-     * maxValue * 10是由于echarts绘画max最大值时有时候会突破取整，如99->100
-     */
-    const lastValueItemOffset = !isVertical
-      ? (exactCalcStrFontCount(convertNumToThousand(maxValue * 10))) * valueAxisLabelFontSize / 2
-      : 0;
   
     const legendPaddingTopBottom = typeof legendPadding === "number"
       ? legendPadding
@@ -262,7 +256,6 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
           ? legendPadding[0]
           : legendPadding[0] + legendPadding[2];
     
-    // todo
     const legendWidth = legendObj.legend.orient === "vertical"
       ? maxLongSeriesNameCount * legendFontSize + legendObj.legend.itemWidth + legendIconTextDis
       : legendNoPaddingWidth + legendPaddingLeftRight;
@@ -273,12 +266,17 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
     const legendOnTop = !(legendObj.legend.bottom !== undefined && legendObj.legend.top === undefined);
     const legendOnLeft = !(legendObj.legend.right !== undefined && legendObj.legend.left === undefined);
     
+    /** maxValue * 10是由于echarts绘画max最大值时有时候会突破取整，如99->100 */
+    const lastValueItemOffset = !isVertical
+      ? (exactCalcStrFontCount(convertNumToThousand(maxValue * 10))) * valueAxisLabelFontSize / 2
+      : 0;
+    
     // 自动计算的grid边界尺寸距离
     const autoCalcGridObj = {
-      top: isVertical ? valueAxisLabelFontSize * 0.5 : 0,
-      right: 0,
-      bottom: 0,
-      left: 0,
+      top: isVertical && !valueAxisInverse ? valueAxisLabelFontSize * 0.5 : 0,
+      right: !isVertical && !valueAxisInverse ? lastValueItemOffset : 0,
+      bottom: isVertical && valueAxisInverse ? valueAxisLabelFontSize * 0.5 : 0,
+      left: !isVertical && valueAxisInverse ? lastValueItemOffset : 0,
       containLabel: true,
     };
     
