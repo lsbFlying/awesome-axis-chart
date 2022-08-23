@@ -7,11 +7,10 @@ import ResizeObserver from "resize-observer-polyfill";
 import {AxisChartDataItem, AxisChartProps, AxisChartState, ResizeObserverType} from "./model";
 import {
   defaultAxisLabelMargin, defaultFontSize,
-  legendBottomMargin, legendConfig, legendIconTextDiff,
+  legendBottomMargin, legendConfig, legendIconTextDis,
 } from "./option";
-import {exactCalcStrFontCount, fit} from "./utils";
+import {convertNumToThousand, exactCalcStrFontCount, fit} from "./utils";
 import {EChartsType} from "echarts/types/dist/echarts";
-import {testData2} from "../../views/temp-test/testData";
 
 export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartState> {
   
@@ -91,9 +90,6 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
     // @ts-ignore
     const categoryDataArray = categoryData || (pureDataItem ? [] : data[0]?.data.map((item: AxisChartDataItem) => item.name));
     const isVertical = theme.includes("vertical");
-    // const allSeriesValueDataArray = data.map(item => item[2]);
-    // const maxValue = max(allSeriesValueDataArray);
-    const maxValue = 60;
     const seriesNames = data.map(item => `${item.name}`);
     
     // 先合并，然后取合并值配置或者无配置则按默认配置处理
@@ -101,7 +97,10 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
       tooltip: {
         confine: true,
       },
-      series: testData2,
+      series: data.map(item => ({
+        ...item,
+        type: "line",
+      })),
     }, option);
     
     if (theme === "verticalInverse") {
@@ -118,9 +117,14 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
     
     const valueAxisNameFontSize = fit(chartOptionValueAxis?.nameTextStyle?.fontSize || defaultFontSize);
     const valueAxisName = chartOptionValueAxis?.name || "";
+  
+    // const allSeriesValueDataArray = data.map(item => item[2]);
+    // const maxValue = max(allSeriesValueDataArray);
+    // const maxValue = 60;
+    const maxValue = 50000000;
     
     const valueAxisNamePaddingLeftOrRight = -(
-      exactCalcStrFontCount(maxValue) * valueAxisNameFontSize
+      exactCalcStrFontCount(convertNumToThousand(maxValue)) * valueAxisNameFontSize
       + fit(chartOptionValueAxis?.axisLabel?.margin || defaultAxisLabelMargin)
     );
     // 只有一条值轴时，该值轴是否在右侧
@@ -216,15 +220,13 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
     legendObj.legend.itemHeight = fit(legendObj.legend.itemHeight);
     
     const legendPadding = legendObj.legend.padding;
-    const legendPaddingLeftRight = fit(
-      typeof legendPadding === "number"
-        ? legendPadding
-        : legendPadding.length === 1
+    const legendPaddingLeftRight = typeof legendPadding === "number"
+      ? legendPadding
+      : legendPadding.length === 1
         ? legendPadding[0]
         : legendPadding.length === 2 || legendPadding.length === 3
           ? legendPadding[1]
-          : legendPadding[1] + legendPadding[3]
-    );
+          : legendPadding[1] + legendPadding[3];
     
     const legendNoPaddingWidth = legendObj.legend.width
       ? legendObj.legend.width - legendPaddingLeftRight
@@ -239,7 +241,7 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
       // 当前这个图例的宽度，不包含itemGap的距离
       const curLegendItemWidth = exactCalcStrFontCount(item)
         * legendFontSize
-        + legendObj.legend.itemWidth + legendIconTextDiff + legendObj.legend.itemGap;
+        + legendObj.legend.itemWidth + legendIconTextDis + legendObj.legend.itemGap;
       
       rowReduceLegendItemWidth += curLegendItemWidth;
       
@@ -247,7 +249,7 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
       // 包含itemGap
       const nextLegendItemWidth = nextItem
         ? exactCalcStrFontCount(nextItem) * legendFontSize
-        + legendObj.legend.itemWidth + legendIconTextDiff + legendObj.legend.itemGap
+        + legendObj.legend.itemWidth + legendIconTextDis + legendObj.legend.itemGap
         : 0;
       
       // 真正的最终legend的宽度需要去除最后一个legend的右侧gap距离
@@ -266,10 +268,10 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
     
     const lastValueItemOffset = !isVertical
       /**
-       * maxValue后加一个0是由于echarts绘画max最大值时有时候会突破取整，如99->100
+       * maxValue * 10是由于echarts绘画max最大值时有时候会突破取整，如99->100
        * + 1 是弥补计算贴边
        */
-      ? (exactCalcStrFontCount(`${maxValue}0`) + 1) * valueAxisLabelFontSize
+      ? (exactCalcStrFontCount(convertNumToThousand(maxValue * 10)) + 1) * valueAxisLabelFontSize
       : 0;
     
     // 不包含legend的相关尺寸考虑
@@ -278,15 +280,15 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
       ? valueAxisLabelFontSize / 2 + valueAxisNameFontSize * 2
       : 0;
     
-    const legendPaddingTopBottom = fit(
-      typeof legendPadding === "number"
-        ? legendPadding
-        : legendPadding.length === 1
+    const legendPaddingTopBottom = typeof legendPadding === "number"
+      ? legendPadding
+      : legendPadding.length === 1
         ? legendPadding[0]
         : legendPadding.length === 2
           ? legendPadding[0]
-          : legendPadding[0] + legendPadding[2]
-    );
+          : legendPadding[0] + legendPadding[2];
+  
+    // todo
     const legendHeight = legendObj.legend.itemHeight * legendRows
       + legendObj.legend.itemGap * (legendRows - 1) + legendPaddingTopBottom;
     const legendWidth = legendNoPaddingWidth + legendPaddingLeftRight;
@@ -300,9 +302,11 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
       containLabel: true,
     };
     
+    // todo
     const valueAxisNameWidth = 0;
     // legend的top与left权重大于bottom与right
     if (legendRows === 1 && (chartWidth) - legendNoPaddingWidth) {}
+    // todo
     if (legendPlacement === "top") {
       // autoCalcGridObj.top += (legendHeight + legendBottomMargin);
     }

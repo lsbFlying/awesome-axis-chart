@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { AxisChart } from "../../components/temp";
 import { Wrap } from "./styled";
-import { testData2 } from "./testData";
+import {categoryDataTest, testData2, testData3} from "./testData";
 
 const TempTest = () => {
   const [autoFit, setAutoFit] = useState(false);
@@ -15,8 +15,9 @@ const TempTest = () => {
         <AxisChart
           // vertical/horizontal/verticalInverse/horizontalInverse
           // theme="verticalInverse"
-          data={testData2}
-          // categoryData={[]}
+          // @ts-ignore
+          data={testData3}
+          categoryData={categoryDataTest}
           pureDataItem={false}
           autoFit={autoFit}
           option={{
