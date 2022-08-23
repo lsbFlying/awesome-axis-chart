@@ -16,14 +16,14 @@ export interface AxisChartDataItem {
   /** 数据项名称 */
   name: string | number;
   /** 单个数据项的数值 */
-  value: number | string;
+  value: number | string | null;
 }
 
 export interface AxisChartData {
   /** 系列名 */
   name: string | number;
   /** 该系列数据 */
-  data: AxisChartDataItem[] | (number | string)[];
+  data: AxisChartDataItem[] | (number | string | null)[];
 }
 
 export interface AxisChartProps extends AxisChartICSS {
@@ -44,12 +44,6 @@ export interface AxisChartProps extends AxisChartICSS {
    * 会以option为主，theme的主题配置会失效
    */
   theme: "vertical" | "horizontal" | "verticalInverse" | "horizontalInverse";
-  /**
-   * 图例的位置，上下左右，默认在上方居中
-   * 权重级别比option低，即如果option里面的配置重新设置legend的位置
-   * 会以option为主，legendPlacement的配置会失效
-   */
-  legendPlacement: "top" | "bottom" | "right" | "left";
   /**
    * 是否合并echarts配置项
    * 默认true合并，但是合并会影响图表数据渲染的准确性

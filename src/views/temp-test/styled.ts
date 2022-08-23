@@ -16,7 +16,7 @@ export const Wrap = styled.div`
   align-items: center;
   //background-color: black;
   .testAxisChart {
-    width: 60vw;
+    width: 80vw;
     height: 45vh;
     //height: 15vh;
     background-color: aliceblue;
