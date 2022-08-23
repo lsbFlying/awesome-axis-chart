@@ -17,8 +17,8 @@ const TempTest = () => {
           // theme="verticalInverse"
           // @ts-ignore
           data={testData3}
-          categoryData={categoryDataTest}
-          pureDataItem={false}
+          // categoryData={categoryDataTest}
+          pureData={false}
           autoFit={autoFit}
           option={{
             xAxis: {

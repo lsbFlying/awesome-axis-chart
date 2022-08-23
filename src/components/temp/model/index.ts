@@ -35,7 +35,7 @@ export interface AxisChartProps extends AxisChartICSS {
    * 数据源的data数组的类型是AxisChartDataItem类型还是(number | string)类型
    * 为true则是(number | string)类型，false则是AxisChartDataItem类型
    */
-  pureDataItem?: boolean;
+  pureData?: boolean;
   /** echarts的配置参数(echarts官方文档上的配置项) */
   option?: any;
   /**

@@ -42,16 +42,16 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
   }
   
   componentDidUpdate(prevProps: Readonly<AxisChartProps>, prevState: Readonly<AxisChartState>, snapshot?: any) {
-    const { autoFit, mergeOption, legendPlacement, theme, option, data, categoryData, pureDataItem } = this.props;
+    const { autoFit, mergeOption, legendPlacement, theme, option, data, categoryData, pureData } = this.props;
     const {
       autoFit: prevAutoFit, mergeOption: prevMergeOption, legendPlacement: prevLegendPlacement,
       theme: prevTheme, option: prevOption, data: prevData, categoryData: prevCategoryData,
-      pureDataItem: prevPureDataItem,
+      pureData: prevPureData,
     } = prevProps;
     if (
       data !== prevData || categoryData !== prevCategoryData || option !== prevOption
       || legendPlacement !== prevLegendPlacement || theme !== prevTheme || autoFit !== prevAutoFit
-      || mergeOption !== prevMergeOption || pureDataItem !== prevPureDataItem
+      || mergeOption !== prevMergeOption || pureData !== prevPureData
     ) {
       fit.autoFit = autoFit;
       this.handleChartOption();
@@ -85,10 +85,10 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
    * 主要针对grid以及各种边界的距离处理
    */
   genDefaultOption = () => {
-    const { theme, data, option, legendPlacement, categoryData, pureDataItem } = this.props;
+    const { theme, data, option, legendPlacement, categoryData, pureData } = this.props;
     const chartWidth = (this.chartsInstance as EChartsType).getWidth();
     // @ts-ignore
-    const categoryDataArray = categoryData || (pureDataItem ? [] : data[0]?.data.map((item: AxisChartDataItem) => item.name));
+    const categoryDataArray = categoryData || (pureData ? [] : data[0]?.data.map((item: AxisChartDataItem) => item.name));
     const isVertical = theme.includes("vertical");
     const seriesNames = data.map(item => `${item.name}`);
     
@@ -121,6 +121,7 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
     // const allSeriesValueDataArray = data.map(item => item[2]);
     // const maxValue = max(allSeriesValueDataArray);
     // const maxValue = 60;
+    // todo legend图例的点击以及值轴的自定义渲染都会影响maxValue的确定
     const maxValue = 50000000;
     
     const valueAxisNamePaddingLeftOrRight = -(
