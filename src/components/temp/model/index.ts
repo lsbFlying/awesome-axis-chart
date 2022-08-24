@@ -1,5 +1,8 @@
 import {RefObject} from "react";
 import {AxisChartICSS} from "./icss";
+import {EChartOption} from "echarts";
+
+export * from "./icss";
 
 export interface AxisChartProps extends AxisChartICSS {
   /** 数据源 */
@@ -18,7 +21,7 @@ export interface AxisChartProps extends AxisChartICSS {
    */
   resizeObserver?: boolean;
   /** echarts的配置参数(echarts官方文档上的配置项) */
-  option?: any;
+  option?: EChartOption;
   /** echarts初始化参数配置 */
   // initOpts?: EChartsInitOpts;
   /**

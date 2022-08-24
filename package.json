@@ -2,6 +2,7 @@
   "name": "awesome-axis-chart",
   "version": "0.2.3",
   "dependencies": {
+    "@types/echarts": "^4.9.16",
     "echarts": "^5.2.2",
     "echarts-for-react": "^3.0.2",
     "lodash": "^4.17.21"
