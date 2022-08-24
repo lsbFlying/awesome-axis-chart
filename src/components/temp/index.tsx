@@ -6,7 +6,7 @@ import merge from "lodash/merge";
 import ResizeObserver from "resize-observer-polyfill";
 import {AxisChartDataItem, AxisChartProps, AxisChartState, ResizeObserverType} from "./model";
 import {
-  defaultAxisLabelMargin, defaultFontSize, offsetMargin, legendConfig, legendIconTextDis,
+  defaultFontSize, offsetMargin, legendConfig, legendIconTextDis,
 } from "./option";
 import {convertNumToThousand, exactCalcStrFontCount, fit} from "./utils";
 import {EChartsType} from "echarts/types/dist/echarts";
@@ -84,14 +84,29 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
   genDefaultOption = () => {
     const { theme, data, option, categoryData, pureData } = this.props;
     const chartWidth = (this.chartsInstance as EChartsType).getWidth();
-    // @ts-ignore
-    const categoryDataArray = categoryData || (pureData ? [] : data[0]?.data.map((item: AxisChartDataItem) => item.name));
+    /**
+     * 如果外界没有给出类目数据，则会默认遍历map处理找出类目轴数据，
+     * 此时如果遇到大数据则会耗时，不建议，所以尽量在遇到大数据的情况下给出类目数据
+     */
+    const categoryDataArray = categoryData || (pureData ? [] : (data[0]?.data as AxisChartDataItem[]).map(item => item.name));
     const isVertical = theme.includes("vertical");
     let maxLongSeriesNameCount = 0;
-    const seriesNames = data.map(item => {
+    const seriesNames: string[] = [];
+    let maxValue = 0;
+    const seriesData = data.map(item => {
       const res = `${item.name}`;
+      seriesNames.push(res);
       maxLongSeriesNameCount = Math.max(exactCalcStrFontCount(res), maxLongSeriesNameCount);
-      return res;
+      const curDataMax = pureData
+        ? max(item.data as number[])
+        : max((item.data as AxisChartDataItem[]).map(item1 => item1.value));
+      maxValue = Math.max((curDataMax as number) || 0, maxValue);
+      return {
+        ...item,
+        data: !isVertical ? reverse(item.data) : item.data,
+        // type: "line",
+        type: "bar",
+      };
     });
     
     // 先合并，然后取合并值配置或者无配置则按默认配置处理
@@ -99,12 +114,7 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
       tooltip: {
         confine: true,
       },
-      series: data.map(item => ({
-        ...item,
-        data: !isVertical ? reverse(item.data) : item.data,
-        // type: "line",
-        type: "bar",
-      })),
+      series: seriesData,
     }, option);
     
     if (theme === "verticalInverse") {
@@ -121,12 +131,6 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
     
     const valueAxisNameFontSize = fit(chartOptionValueAxis?.nameTextStyle?.fontSize || defaultFontSize);
     const valueAxisName = chartOptionValueAxis?.name || "";
-    
-    // todo legend图例的点击以及值轴的自定义渲染都会影响maxValue的确定
-    // const allSeriesValueDataArray = data.map(item => item[2]);
-    // const maxValue = max(allSeriesValueDataArray);
-    const maxValue = 60;
-    // const maxValue = 50000000;
     
     // 值轴是否有设置上下(垂直时)或者左右(水平时)反向颠倒
     const valueAxisInverse = chartOptionValueAxis?.inverse;
@@ -266,9 +270,12 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
     const legendOnTop = !(legendObj.legend.bottom !== undefined && legendObj.legend.top === undefined);
     const legendOnLeft = !(legendObj.legend.right !== undefined && legendObj.legend.left === undefined);
     
-    /** maxValue * 10是由于echarts绘画max最大值时有时候会突破取整，如99->100 */
+    /**
+     * maxValue * 10是由于echarts绘画max最大值时有时候会突破取整，如99->100
+     * + 0.5是为了扩大一丢丢额外空间，展示美化一下不拥挤
+     */
     const lastValueItemOffset = !isVertical
-      ? (exactCalcStrFontCount(convertNumToThousand(maxValue * 10))) * valueAxisLabelFontSize / 2
+      ? (exactCalcStrFontCount(convertNumToThousand(maxValue * 10)) + 0.5) * valueAxisLabelFontSize / 2
       : 0;
     
     // 自动计算的grid边界尺寸距离

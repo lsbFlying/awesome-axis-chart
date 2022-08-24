@@ -15,35 +15,44 @@ const TempTest = () => {
       <div className="testAxisChart">
         <AxisChart
           // vertical/horizontal/verticalInverse/horizontalInverse
-          // theme="horizontalInverse"
-          data={testData2}
+          theme="horizontal"
+          data={testData3}
           // categoryData={testCategoryData}
           // pureData={false}
           autoFit={autoFit}
           // legendPlacement="left"
           option={{
             xAxis: {
-              // axisLabel: {
-              //   color: "red"
-              // },
+              axisLabel: {
+                // color: "red",
+                // formatter: (value: number) => {
+                //   let valueTemp = `${value}`;
+                //   if (value >= 10000 && value < 10000000) {
+                //     valueTemp = `${round(value / 10000, 2)}W`;
+                //   } else if (value >= 10000000) {
+                //     valueTemp = `${round(value / 10000000, 2)}KW`;
+                //   }
+                //   return valueTemp;
+                // },
+              },
               // name: "单位：件数",
               // position: "top",
               // inverse: true,
             },
             yAxis: {
               // name: "单位：件数",
-              axisLabel: {
-                // margin: 18,
-                formatter: (value: number) => {
-                  let valueTemp = `${value}`;
-                  if (value >= 10000 && value < 10000000) {
-                    valueTemp = `${round(value / 10000, 2)}W`;
-                  } else if (value >= 10000000) {
-                    valueTemp = `${round(value / 10000000, 2)}KW`;
-                  }
-                  return valueTemp;
-                },
-              },
+              // axisLabel: {
+              //   // margin: 18,
+              //   formatter: (value: number) => {
+              //     let valueTemp = `${value}`;
+              //     if (value >= 10000 && value < 10000000) {
+              //       valueTemp = `${round(value / 10000, 2)}W`;
+              //     } else if (value >= 10000000) {
+              //       valueTemp = `${round(value / 10000000, 2)}KW`;
+              //     }
+              //     return valueTemp;
+              //   },
+              // },
               // position: "right",
               // inverse: true,
             },
