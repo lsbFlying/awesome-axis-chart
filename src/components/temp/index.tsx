@@ -30,25 +30,30 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
   private myObserver: ResizeObserverType | null = null;
   
   componentDidMount() {
+    const { resizeObserver } = this.props;
     const { containerRef } = this.state;
     this.chartsInstance = echarts.init(containerRef.current as HTMLElement);
-    this.myObserver = new ResizeObserver(() => {
-      (this.chartsInstance as EChartsType).resize();
+    if (resizeObserver) {
+      this.myObserver = new ResizeObserver(() => {
+        (this.chartsInstance as EChartsType).resize();
+        this.handleChartOption();
+      });
+      this.myObserver.observe(containerRef.current as Element);
+    } else {
       this.handleChartOption();
-    });
-    this.myObserver.observe(containerRef.current as Element);
+    }
   }
   
   componentDidUpdate(prevProps: Readonly<AxisChartProps>, prevState: Readonly<AxisChartState>, snapshot?: any) {
-    const { autoFit, mergeOption, theme, option, data, categoryData, pureData } = this.props;
+    const { autoFit, mergeOption, theme, option, data, categoryData, pureData, resizeObserver } = this.props;
     const {
       autoFit: prevAutoFit, mergeOption: prevMergeOption, theme: prevTheme, option: prevOption,
-      data: prevData, categoryData: prevCategoryData, pureData: prevPureData,
+      data: prevData, categoryData: prevCategoryData, pureData: prevPureData, resizeObserver: prevResizeObserver
     } = prevProps;
     if (
-      data !== prevData || categoryData !== prevCategoryData
-      || option !== prevOption || theme !== prevTheme || autoFit !== prevAutoFit
-      || mergeOption !== prevMergeOption || pureData !== prevPureData
+      data !== prevData || categoryData !== prevCategoryData || option !== prevOption
+      || theme !== prevTheme || autoFit !== prevAutoFit || mergeOption !== prevMergeOption
+      || pureData !== prevPureData || resizeObserver !== prevResizeObserver
     ) {
       fit.autoFit = autoFit;
       this.handleChartOption();
@@ -88,11 +93,14 @@ export class AxisChart extends React.PureComponent<AxisChartProps, AxisChartStat
      * 如果外界没有给出类目数据，则会默认遍历map处理找出类目轴数据，
      * 此时如果遇到大数据则会耗时，不建议，所以尽量在遇到大数据的情况下给出类目数据
      */
-    const categoryDataArray = categoryData || (pureData ? [] : (data[0]?.data as AxisChartDataItem[]).map(item => item.name));
+    const categoryDataArray = categoryData
+      || (pureData ? [] : (data[0]?.data as AxisChartDataItem[]).map(item => item.name));
+    
     const isVertical = theme.includes("vertical");
+    
     let maxLongSeriesNameCount = 0;
-    const seriesNames: string[] = [];
     let maxValue = 0;
+    const seriesNames: string[] = [];
     const seriesData = data.map(item => {
       const res = `${item.name}`;
       seriesNames.push(res);
