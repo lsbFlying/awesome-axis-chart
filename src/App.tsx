@@ -1,13 +1,11 @@
 import React from 'react';
 import './App.css';
-// import TestClass from '../src/views/test';
-import TempTest from "./views/temp-test";
+import TestClass from '../src/views/test';
 
 function App() {
   return (
     <div className="App">
-      {/*<TestClass/>*/}
-      <TempTest/>
+      <TestClass/>
     </div>
   );
 }
